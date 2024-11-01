@@ -26,6 +26,10 @@ public class PlayerControler : MonoBehaviour
     [SerializeField]
     LayerMask WhatIsGround;
 
+    // Unit stats
+    [SerializeField]
+    int Health = 3;
+
     // Awake se produit avait le Start. Il peut être bien de régler les références dans cette section.
     void Awake()
     {
