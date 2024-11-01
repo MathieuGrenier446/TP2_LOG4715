@@ -1,8 +1,3 @@
-### Équipe Dante
-#### Chun Yang Li - 2024616
-#### Mathieu Grenier - 2080754
-#### Morgan De Grégorio Beaudoin - 2012501
-
 # Mécaniques à implémenter
 ## Économie interne
 ### Power ups
@@ -29,3 +24,9 @@ Les ennemis seront des ennemis avec des chemins prédéfinis et des attaques lor
 Les projectiles seront un type d’attaque à distance. Ces attaques peuvent être débloquées par le joueur, certains ennemis auront aussi des attaques à distance.
 ### Dash
 Le dash sera un type de déplacement qui permettra d'accélérer rapidement vers l’avant pour éviter un projectile.
+
+# Autheurs
+### Équipe Dante
+#### Chun Yang Li - 2024616
+#### Mathieu Grenier - 2080754
+#### Morgan De Grégorio Beaudoin - 2012501
