@@ -1,7 +1,7 @@
-Équipe Dante
-Chun Yang Li - 2024616
-Mathieu Grenier - 2080754
-Morgan De Grégorio Beaudoin - 2012501
+### Équipe Dante
+#### Chun Yang Li - 2024616
+#### Mathieu Grenier - 2080754
+#### Morgan De Grégorio Beaudoin - 2012501
 
 # Mécaniques à implémenter
 ## Économie interne
