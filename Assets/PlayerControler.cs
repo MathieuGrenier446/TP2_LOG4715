@@ -29,6 +29,16 @@ public class PlayerControler : MonoBehaviour
     // Unit stats
     [SerializeField]
     int Health = 3;
+    // Dash
+    
+    [SerializeField]
+    float DashForce = 24f;
+    [SerializeField]
+    float DashCooldown = 1f;
+    [SerializeField]
+    float DashingTime = 0.2f;
+    bool canDash = true;
+    bool isDashing = false;
 
     // Awake se produit avait le Start. Il peut être bien de régler les références dans cette section.
     void Awake()
@@ -48,10 +58,14 @@ public class PlayerControler : MonoBehaviour
     // Vérifie les entrées de commandes du joueur
     void Update()
     {
+        if (isDashing){
+            return;
+        }
         var horizontal = Input.GetAxis("Horizontal") * MoveSpeed;
         HorizontalMove(horizontal);
         FlipCharacter(horizontal);
         CheckJump();
+        CheckDash();
     }
 
     // Gère le mouvement horizontal
@@ -108,5 +122,25 @@ public class PlayerControler : MonoBehaviour
             _Grounded = true;
             _Anim.SetBool("Grounded", _Grounded);
         }
+    }
+
+    void CheckDash()
+    {
+        if (Input.GetButtonDown("Dash") && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        _Rb.useGravity = false;
+        isDashing = true;
+        _Rb.linearVelocity = new Vector3(0, 0, DashForce * transform.forward.z);
+        yield return new WaitForSeconds(DashingTime);
+        _Rb.useGravity = true;
+        isDashing = false;
+        yield return new WaitForSeconds(DashCooldown);
+        canDash = true;
     }
 }
