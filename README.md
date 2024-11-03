@@ -13,7 +13,7 @@ Utiliser les coquillages ramassés durant la partie pour échanger contre des pe
 ### Système de niveau
 Dans une partie, le joueur gagne de l’expérience en gagnant des points (avec les checkpoints ou en éliminant un adversaire). Lorsqu’il a assez d’expérience, il peut monter de niveau et augmenter une des statistiques de son choix. Il commence au niveau 1 au début de chaque partie. 
 ### Checkpoint
-Un coffre au trésor qui débloque une compétence pour le joueur. Substitue les combats contre les boss.
+Un coffre au trésor. S'approcher et peser sur E pour l'ouvrir.
 
 ## Physique
 ### Obstacles
@@ -23,7 +23,7 @@ Les ennemis seront des ennemis avec des chemins prédéfinis et des attaques lor
 ### Projectiles
 Les projectiles seront un type d’attaque à distance. Ces attaques peuvent être débloquées par le joueur, certains ennemis auront aussi des attaques à distance.
 ### Dash
-Le dash sera un type de déplacement qui permettra d'accélérer rapidement vers l’avant pour éviter un projectile.
+Le dash est débloquable en ouvrant un chest. Peser sur SHIFT pour l'utiliser.
 
 # Autheurs
 ### Équipe Dante
