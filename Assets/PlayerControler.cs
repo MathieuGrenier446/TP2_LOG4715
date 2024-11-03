@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
@@ -37,8 +36,10 @@ public class PlayerControler : MonoBehaviour
     float DashCooldown = 1f;
     [SerializeField]
     float DashingTime = 0.2f;
-    bool canDash = true;
-    bool isDashing = false;
+    [SerializeField]
+    public bool dashUnlocked = false;
+    private bool canDash = true;
+    private bool isDashing = false;
 
     // Awake se produit avait le Start. Il peut être bien de régler les références dans cette section.
     void Awake()
@@ -126,7 +127,7 @@ public class PlayerControler : MonoBehaviour
 
     void CheckDash()
     {
-        if (Input.GetButtonDown("Dash") && canDash)
+        if (dashUnlocked && Input.GetButtonDown("Dash") && canDash)
         {
             StartCoroutine(Dash());
         }
