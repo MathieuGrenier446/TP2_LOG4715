@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cd8b9a8fca1492e49bbf54d89be8efec
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - closedChest: {fileID: 1000011713842796, guid: ffd3e66d4df2a554fb995d41f7ffe4c2,
+      type: 3}
+  - openChest: {fileID: 1000014099110386, guid: e097dc1b761606040a141ca558e64088,
+      type: 3}
+  - coins: {fileID: 1000010387986644, guid: c92fdeb990439954893510a31e925383, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
