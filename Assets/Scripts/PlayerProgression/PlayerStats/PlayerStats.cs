@@ -6,6 +6,22 @@ public class PlayerStats
 
 	private static PlayerStats instance;
 
+	private const float DEFAULT_ATTACK = 10;
+	private const float DEFAULT_HEALTH = 100;
+
+	private const uint BOSS_KILL_EXPERIENCE = 100;
+	private const uint CHECKPOINT_EXPERIENCE = 50;
+	private const uint ENEMY_KILL_EXPERIENCE = 10;
+
+	private const uint BASE_LEVEL_UP_EXPERIENCE = 50;
+
+	private const float EXPONENTIAL_FACTOR = 1.3f;
+
+	private const float LEVEL_UP_ATTACK_MULTIPLIER = 1.1f;
+	private const float LEVEL_UP_HEALTH_MULTIPLIER = 1.2f;
+
+	private uint level = 1;
+
 	private float baseAttack;
 	private float currentHealth;
 	private float maxHealth;
@@ -27,7 +43,7 @@ public class PlayerStats
             if (instance == null)
             {
 				// Declare base values
-                instance = new PlayerStats(10, 100);
+                instance = new PlayerStats(DEFAULT_ATTACK, DEFAULT_HEALTH);
             }
             return instance;
         }
@@ -56,12 +72,62 @@ public class PlayerStats
 		return playerStats;
 	}
 
+	public void AwardBossKillExperience()
+	{
+		AwardExperience(BOSS_KILL_EXPERIENCE);
+	}
+
+	public void AwardCheckpointExperience()
+	{
+		AwardExperience(CHECKPOINT_EXPERIENCE);
+	}
+
+	public void AwardEnemyKillExperience()
+	{
+		AwardExperience(ENEMY_KILL_EXPERIENCE);
+	}
+
+	private void AwardExperience(float experience)
+	{
+		this.experience += experience;
+		CheckForLevelUp();
+		NotifyUI();
+	}
+
+	private void CheckForLevelUp()
+    {
+        float experienceToLevelUp = CalculateExperienceToLevelUp();
+        while (experience >= experienceToLevelUp)
+        {
+            experience -= experienceToLevelUp;
+            LevelUp();
+            experienceToLevelUp = CalculateExperienceToLevelUp();
+        }
+    }
+
+    public float CalculateExperienceToLevelUp()
+    {
+        return BASE_LEVEL_UP_EXPERIENCE * (float)Math.Pow(level, EXPONENTIAL_FACTOR);
+    }
+
+    private void LevelUp()
+    {
+        level++;
+        baseAttack *= LEVEL_UP_ATTACK_MULTIPLIER;
+        maxHealth *= LEVEL_UP_HEALTH_MULTIPLIER;
+        currentHealth = maxHealth;
+
+        NotifyUI();
+        Console.WriteLine($"Leveled up to level {level}! New stats: Attack = {baseAttack}, Max Health = {maxHealth}");
+    }
+
 	public void NotifyUI() => OnStatsChanged?.Invoke();
 
 	public float GetAttack() => baseAttack;
 	public float GetHealth() => currentHealth;
 	public float GetMaxHealth() => maxHealth;
 	public float GetExperience() => experience;
+	public uint GetLevel() => level;
 
 	public void CurentHealthMod(float mod) {
 		currentHealth += mod;
