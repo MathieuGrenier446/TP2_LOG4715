@@ -1009,7 +1009,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6896941560686835699}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0.001208663, y: 0.63074887, z: 3.0479655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1017,7 +1017,7 @@ Transform:
   - {fileID: 4359460910411214397}
   - {fileID: 4832410714656472505}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!95 &3695688767807759023
 Animator:
   serializedVersion: 7
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   destinationPoints:
   - {fileID: 0}
   - {fileID: 0}
-  timeBetweenAttacks: 0
+  timeBetweenAttacks: 0.5
   projectile: {fileID: 8194415033384621191, guid: 84c6684ac84fdb54f8cc6825f2b3c861,
     type: 3}
   playerObjectName: MaleFree1
@@ -1150,8 +1150,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 360
   m_StoppingDistance: 0

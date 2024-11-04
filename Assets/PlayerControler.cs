@@ -137,7 +137,9 @@ public class PlayerControler : MonoBehaviour
     {
         _Rb.useGravity = false;
         isDashing = true;
-        _Rb.linearVelocity = new Vector3(0, 0, DashForce * transform.forward.z);
+        Vector3 forceVector = new Vector3(0, 0, DashForce * transform.forward.z);
+        // _Rb.AddForce(forceVector);
+        _Rb.linearVelocity = forceVector;
         yield return new WaitForSeconds(DashingTime);
         _Rb.useGravity = true;
         isDashing = false;
