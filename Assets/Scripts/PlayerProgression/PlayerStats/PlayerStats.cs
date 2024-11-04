@@ -129,4 +129,9 @@ public class PlayerStats
 	public float GetExperience() => experience;
 	public uint GetLevel() => level;
 
+	public void CurentHealthMod(float mod) {
+		currentHealth += mod;
+		NotifyUI();
+	}
+
 }
