@@ -13,28 +13,23 @@ public class IceBall : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        
-        // Get the main camera
         Camera mainCam = Camera.main;
 
-        // Get the mouse position in screen space, then convert it to world space on the YZ-plane
         mousePos = Input.mousePosition;
-        mousePos.z = Mathf.Abs(mainCam.transform.position.x - transform.position.x); // Set Z-depth to match distance from camera to object on X-axis
+        mousePos.z = Mathf.Abs(mainCam.transform.position.x - transform.position.x);
         Vector3 worldMousePos = mainCam.ScreenToWorldPoint(mousePos);
 
-        // Calculate direction from the iceBall to the mouse position
         Vector3 direction = worldMousePos - transform.position;
-        direction.x = 0; // Lock the X-axis for movement on the YZ-plane
+        direction.x = 0;
 
-        // Apply the initial velocity in the YZ direction
         rigidbody.linearVelocity = direction.normalized * force;
         StartCoroutine(DestroyAfterTime(lifeTime));
     }
 
     private IEnumerator DestroyAfterTime(float time)
     {
-        yield return new WaitForSeconds(time); // Wait for the specified time
-        Destroy(gameObject); // Destroy this game object
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 }
 

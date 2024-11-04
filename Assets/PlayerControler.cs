@@ -40,6 +40,10 @@ public class PlayerControler : MonoBehaviour
     public bool dashUnlocked = false;
     private bool canDash = true;
     private bool isDashing = false;
+    private float iFrame = 1f;
+    private float timer = 0;
+    private bool inIframe = false;
+    
 
     // Awake se produit avait le Start. Il peut être bien de régler les références dans cette section.
     void Awake()
@@ -67,6 +71,15 @@ public class PlayerControler : MonoBehaviour
         FlipCharacter(horizontal);
         CheckJump();
         CheckDash();
+
+        if(inIframe) {
+            
+            timer += Time.deltaTime;
+            if(timer > iFrame) {
+                inIframe = false;
+                timer = 0;
+            }
+        }
     }
 
     // Gère le mouvement horizontal
@@ -126,8 +139,16 @@ public class PlayerControler : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider coll) {
-        if (coll.gameObject.tag == "Obstacle") {
+        if (coll.gameObject.tag == "Obstacle" && !inIframe) {
             PlayerStats.Instance.CurentHealthMod(-10);
+            inIframe = true;
+        }
+    }
+
+    void OnTriggerStay(Collider coll) {
+        if (coll.gameObject.tag == "Obstacle" && !inIframe) {
+            PlayerStats.Instance.CurentHealthMod(-10);
+            inIframe = true;
         }
     }
 
