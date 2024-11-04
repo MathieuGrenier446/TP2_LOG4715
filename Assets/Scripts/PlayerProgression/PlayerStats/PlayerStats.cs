@@ -63,4 +63,9 @@ public class PlayerStats
 	public float GetMaxHealth() => maxHealth;
 	public float GetExperience() => experience;
 
+	public void CurentHealthMod(float mod) {
+		currentHealth += mod;
+		NotifyUI();
+	}
+
 }

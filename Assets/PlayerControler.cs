@@ -125,6 +125,12 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider coll) {
+        if (coll.gameObject.tag == "Obstacle") {
+            PlayerStats.Instance.CurentHealthMod(-10);
+        }
+    }
+
     void CheckDash()
     {
         if (dashUnlocked && Input.GetButtonDown("Dash") && canDash)
