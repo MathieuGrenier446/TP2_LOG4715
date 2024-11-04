@@ -10,9 +10,9 @@ public class BonusCollectible : MonoBehaviour
     }
     private void Update()
     {
-        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
