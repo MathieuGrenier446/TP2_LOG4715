@@ -1,22 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    GameObject BaseObject;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private float travelDistance = 5f;
+    private Vector3 startPosition;
+    [SerializeField] private bool moveRight = true;
     void Start()
     {
-        // create object
-        BaseObject = new GameObject("Obstacle");
-
-        // add components
-        BaseObject.AddComponent<CapsuleCollider>();
+        startPosition = transform.position;
+        StartCoroutine(MoveBackAndForth());
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator MoveBackAndForth()
     {
-        
+        while (true)
+        {
+            Vector3 targetPosition;
+
+            if (moveRight)
+            {
+                targetPosition = startPosition + Vector3.forward * travelDistance;
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else
+            {
+                targetPosition = startPosition - Vector3.forward * travelDistance;
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
+
+            while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                yield return null;
+            }
+
+            moveRight = !moveRight;
+        }
     }
 }

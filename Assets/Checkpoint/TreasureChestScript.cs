@@ -32,6 +32,7 @@ public class TreasureChest : MonoBehaviour
         isOpened = true;
 
         playerControler.dashUnlocked = true;
+        PlayerStats.Instance.AwardCheckpointExperience();
         StartCoroutine(DisplayDashUnlockedText());
     }
 
