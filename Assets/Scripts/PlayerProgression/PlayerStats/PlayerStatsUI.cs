@@ -6,10 +6,10 @@ public class PlayerUI : MonoBehaviour
 {
     public Slider healthBar;
     public Slider experienceBar;
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI attackText;
-    public TextMeshProUGUI experienceText;
-    public TextMeshProUGUI levelText;
+    public Text healthText;
+    public Text attackText;
+    public Text experienceText;
+    public Text levelText;
 
     private void Start()
     {
