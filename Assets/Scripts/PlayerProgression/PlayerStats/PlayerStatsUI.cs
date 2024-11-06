@@ -38,5 +38,6 @@ public class PlayerUI : MonoBehaviour
         healthText.text = $"{(uint)Math.Round(currentHealth)}/{(uint)Math.Round(maxHealth)}";
         experienceText.text = $"{PlayerStats.Instance.GetExperience()}/{experienceToLevelUp}";
         levelText.text = "Level: " + PlayerStats.Instance.GetLevel();
+        currencyText.text = "Seashell: " + PlayerStats.Instance.GetCurrency();
     }
 }
