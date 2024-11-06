@@ -43,13 +43,11 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
     // Update is called once per frame
     void Update()
     {
+        UpdateIsPlayerInSight();
+        UpdateIsPathClear();
         this.StateMachine.Update();
     }
 
-    void FixedUpdate(){
-        UpdateIsPlayerInSight();
-        UpdateIsPathClear();
-    }
 
     public void Die(){
         // TODO: give experience to player
@@ -121,8 +119,9 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
         bool isFuturePositionOnGround = Physics.Raycast(futurePosition, Vector3.down, maxDistance, WhatIsGround);
 
         bool isPathBlocked = wallCollider.isColliding;
-        bool isStuck = IsStuck();
-        this.isPathClear = isFuturePositionOnGround && !isPathBlocked && !isStuck;
+        wallCollider.isColliding = false;
+        //bool isStuck = IsStuck();
+        this.isPathClear = isFuturePositionOnGround && !isPathBlocked;
         lastPosition = transform.position;
     }
 
