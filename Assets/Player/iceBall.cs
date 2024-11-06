@@ -25,6 +25,15 @@ public class IceBall : MonoBehaviour
         rigidbody.linearVelocity = direction.normalized * force;
         StartCoroutine(DestroyAfterTime(lifeTime));
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy")){
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            enemy.TakeDamage(force);
+        }
+        Destroy(gameObject);
+    }
 
     private IEnumerator DestroyAfterTime(float time)
     {

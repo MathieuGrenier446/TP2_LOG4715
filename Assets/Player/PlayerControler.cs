@@ -14,6 +14,7 @@ public class PlayerControler : MonoBehaviour
     Animator _Anim { get; set; }
     Rigidbody _Rb { get; set; }
     Camera _MainCamera { get; set; }
+    public Transform Target;
 
     // Valeurs exposées
     [SerializeField]
@@ -141,7 +142,16 @@ public class PlayerControler : MonoBehaviour
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.tag == "Obstacle" && !inIframe) {
             PlayerStats.Instance.CurentHealthMod(-10);
+            if (PlayerStats.Instance.GetHealth() == 0){
+                Destroy(gameObject);
+            }
             inIframe = true;
+        } else if (coll.CompareTag("Projectile")){
+            Projectile projectile = coll.gameObject.GetComponent<Projectile>();
+            PlayerStats.Instance.CurentHealthMod(-projectile.Damage);
+            if (PlayerStats.Instance.GetHealth() == 0){
+                Destroy(gameObject);
+            }
         }
     }
 

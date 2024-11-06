@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6043474660368569067}
   - component: {fileID: 7787065593558569861}
-  m_Layer: 0
+  - component: {fileID: 1283016634851374652}
+  m_Layer: 7
   m_Name: TreasureChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +59,33 @@ MonoBehaviour:
   detectionRadius: 1.5
   playerControler: {fileID: 0}
   dashUnlockedText: {fileID: 7439261624716623051}
+--- !u!54 &1283016634851374652
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818363942894880479}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3257077632515627604
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3585521980626424537}
   - component: {fileID: 2568453716712464726}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: mesh_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +125,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3257077632515627604}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: eb535d441884b784492d6b42c8ebcadf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -109,7 +137,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4b1205a7235860c479fc94aefe26ebf1, type: 3}
 --- !u!1 &4358139338231233349
@@ -124,7 +152,7 @@ GameObject:
   - component: {fileID: 5466575945190576246}
   - component: {fileID: 42432050409466837}
   - component: {fileID: 4120299481779424767}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +253,7 @@ GameObject:
   - component: {fileID: 9114713432124523030}
   - component: {fileID: 4279511308424786217}
   - component: {fileID: 7439261624716623051}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: DashUnlockedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011713842796, guid: ffd3e66d4df2a554fb995d41f7ffe4c2, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1000011713842796, guid: ffd3e66d4df2a554fb995d41f7ffe4c2, type: 3}
       propertyPath: m_IsActive
@@ -441,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010387986644, guid: c92fdeb990439954893510a31e925383, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1000010387986644, guid: c92fdeb990439954893510a31e925383, type: 3}
       propertyPath: m_IsActive
@@ -518,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000014099110386, guid: e097dc1b761606040a141ca558e64088, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1000014099110386, guid: e097dc1b761606040a141ca558e64088, type: 3}
       propertyPath: m_IsActive

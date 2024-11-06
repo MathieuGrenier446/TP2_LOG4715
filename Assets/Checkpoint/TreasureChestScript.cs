@@ -33,7 +33,7 @@ public class TreasureChest : MonoBehaviour
 
         playerControler.dashUnlocked = true;
         PlayerStats.Instance.AwardCheckpointExperience();
-        StartCoroutine(DisplayDashUnlockedText());
+        DisplayText(dashUnlockedText);
     }
 
     private void checkIsPlayerNearby()
@@ -41,17 +41,17 @@ public class TreasureChest : MonoBehaviour
         isPlayerNearby = Physics.CheckSphere(transform.position, detectionRadius, whatIsPlayer);
     }
 
-    private IEnumerator DisplayDashUnlockedText()
+    public void DisplayText(TextMeshProUGUI Text)
     {
-        dashUnlockedText.gameObject.SetActive(true);   
-        yield return FloatAndFadeCoroutine(); 
-        Destroy(dashUnlockedText.gameObject);   
+        Text.gameObject.SetActive(true);   
+        StartCoroutine(FloatAndFadeCoroutine(Text));
+        Destroy(Text.gameObject);   
     }
 
-    private IEnumerator FloatAndFadeCoroutine()
+    private IEnumerator FloatAndFadeCoroutine(TextMeshProUGUI Text)
     {
-        Vector3 startPosition = dashUnlockedText.transform.position;
-        Color textColor = dashUnlockedText.color;
+        Vector3 startPosition = Text.transform.position;
+        Color textColor = Text.color;
         float startAlpha = textColor.a;
         float fadeDuration = 1f;
         float floatSpeed = 1f;
@@ -61,20 +61,13 @@ public class TreasureChest : MonoBehaviour
         {
             float t = elapsedTime / fadeDuration;
 
-            dashUnlockedText.transform.position = startPosition + new Vector3(0, t * floatSpeed, 0); // Move up
+            Text.transform.position = startPosition + new Vector3(0, t * floatSpeed, 0); // Move up
 
             textColor.a = Mathf.Lerp(startAlpha, 0, t);
-            dashUnlockedText.color = textColor;
+            Text.color = textColor;
 
             elapsedTime += Time.deltaTime;
             yield return null; 
         }
-
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

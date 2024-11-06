@@ -27,16 +27,11 @@ public class Projectile: MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // PlayerControler player = other.GetComponent<PlayerControler>();
-            // if (player != null)
-            // {
-            //     player.TakeDamage(damage);
-            // }
             PlayerStats.Instance.CurentHealthMod(-Damage);
-            Destroy(gameObject);
+        } else if (other.CompareTag("Enemy")){
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            enemy.TakeDamage(Damage);
         }
-        else {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

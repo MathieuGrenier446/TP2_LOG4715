@@ -1,20 +1,24 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
+public class EnemyController : MonoBehaviour
 {
     public EnemyStateMachine StateMachine;
     Rigidbody _Rb { get; set; }
-    CapsuleCollider entityCollider;
-    [SerializeField]
-    WallCollider wallCollider;
+    Collider entityCollider;
     public LayerMask WhatIsPlayer;
     public LayerMask WhatIsGround;
-    public float Health {get; set;} = 10;
-    public float MoveSpeed { get; set; } = 1f;
-    public float AttackDamage { get; set; }
+    public LayerMask WhatIsWall;
+    public TextMesh EmoteText;
+    public float ChaseMoveSpeedMultiplier = 2.0f;
+    public float Health = 100;
+    public float MoveSpeed = 1f;
+    public float AttackDamage = 5;
     public float AngleFOV;
     public float SightRange;
     public float AttackRange;
+    public float wallDetectionRange = 0.2f;
     public RangedWeapon rangedWeapon;
     public float MaxFallDistance;
     [HideInInspector]
@@ -28,21 +32,20 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
     private float direction;
     private float maxStuckDuration = 2;
     private float currentStuckDuration = 0;
-    Vector3 futurePosition;
-    Vector3 lastPosition;
-    Vector3 sizeOfPathBlockedDetectionBox; 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Vector3 lastPosition;
+    
     void Awake()
     {
         this.StateMachine = new EnemyStateMachine(this);
         this.StateMachine.Initialize(StateMachine.patrolState);
         _Rb = GetComponent<Rigidbody>();
-        entityCollider = GetComponent<CapsuleCollider>();
+        entityCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        direction = transform.forward.z;
         UpdateIsPlayerInSight();
         UpdateIsPathClear();
         this.StateMachine.Update();
@@ -51,6 +54,7 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
 
     public void Die(){
         // TODO: give experience to player
+        Emote("Nooo!", Color.red);
         Destroy(gameObject);
     }
 
@@ -59,6 +63,10 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
         if (this.Health <= 0) {
             Die();
         }
+        if (!isPlayerInSight){
+            Reverse();
+        }
+        Emote("Ouch!", Color.red);
     }
     
     public void GoForward()
@@ -73,10 +81,6 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
 
     public void StopMoving(){
         _Rb.linearVelocity = new Vector3(0,_Rb.linearVelocity.y,0);
-    }
-
-    public void OnTriggerEnter(Collider collider){
-        // TODO: Add a flip when colliding with wall in the future.
     }
     
     private void UpdateIsPlayerInSight(){
@@ -103,7 +107,8 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
         float distanceToTarget = Vector3.Distance(transform.position, playerCollider.transform.position);
         this.isPlayerInAttackRange = distanceToTarget <=AttackRange;
         this.isPlayerInSight = true;
-        this.playerPosition = playerCollider.transform.position;
+        PlayerControler player = playerCollider.gameObject.GetComponent<PlayerControler>();
+        playerPosition = player.Target.position;
         return;
     }
     
@@ -113,16 +118,8 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
     }
 
     private void UpdateIsPathClear(){
-        direction = transform.forward.z;
-        float maxDistance = entityCollider.bounds.center.y - entityCollider.bounds.min.y + MaxFallDistance;
-        futurePosition = transform.position + _Rb.linearVelocity;
-        bool isFuturePositionOnGround = Physics.Raycast(futurePosition, Vector3.down, maxDistance, WhatIsGround);
-
-        bool isPathBlocked = wallCollider.isColliding;
-        wallCollider.isColliding = false;
-        //bool isStuck = IsStuck();
-        this.isPathClear = isFuturePositionOnGround && !isPathBlocked;
-        lastPosition = transform.position;
+        this.isPathClear = IsPathAhead() && !IsPathBlocked() && !IsStuck();
+        
     }
 
     public void AttackPlayer() {
@@ -131,30 +128,43 @@ public class EnemyController : MonoBehaviour, IDamageable, IMovable, IUnitStats
         );
     }
 
-    public void Emote(string emote, Color color) {
-
+    public void Emote(string text, Color color)
+    {
+        CancelInvoke("HideEmote");
+        EmoteText.text = text;
+        EmoteText.color = color;
+        EmoteText.gameObject.SetActive(true); 
+        Invoke("HideEmote", 1);
     }
 
+    private void HideEmote()
+    {
+        EmoteText.gameObject.SetActive(false);
+    }
+
+    private bool IsPathAhead(){
+        float maxDistance = entityCollider.bounds.center.y - entityCollider.bounds.min.y + MaxFallDistance;
+        Vector3 futurePosition = transform.position + _Rb.linearVelocity;
+        return Physics.Raycast(futurePosition, Vector3.down, maxDistance, WhatIsGround);
+    }
+
+    private bool IsPathBlocked(){
+        Vector3 halfDimensionsOfBox = new Vector3(0.0f, entityCollider.bounds.size.y*0.8f, wallDetectionRange/2);
+        Vector3 centerOfBox = new Vector3(entityCollider.bounds.center.x, entityCollider.bounds.center.y, entityCollider.bounds.center.z+(entityCollider.bounds.extents.z+wallDetectionRange/2)*direction);
+        return Physics.CheckBox(centerOfBox, halfDimensionsOfBox, Quaternion.identity, WhatIsWall);
+    }
     private bool IsStuck(){
         bool isStuckSinceLastFrame = transform.position == lastPosition;
+        bool isStuck;
         if (!isStuckSinceLastFrame) {
             currentStuckDuration = 0;
-            return false;
+            isStuck = false;
+        } else {
+            currentStuckDuration+=Time.deltaTime;
+            isStuck = currentStuckDuration>maxStuckDuration;
+            if (isStuck) currentStuckDuration = 0;
         }
-        currentStuckDuration+=Time.deltaTime;
-        bool isStuck = currentStuckDuration>maxStuckDuration;
-        if (isStuck) {
-            currentStuckDuration = 0;
-            return true;
-        }
-        return false;
-    }
-
-    private void OnDrawGizmosSelected(){
-        Gizmos.color = Color.green;
-        Vector3 colliderCenter = entityCollider.bounds.center;
-        float widthZ = entityCollider.bounds.max.z;
-        Vector3 pointOfOriginOfPathBlockedDetectionBox = new Vector3(colliderCenter.x, colliderCenter.y, colliderCenter.z+widthZ*direction*-1);
-        Gizmos.DrawCube(pointOfOriginOfPathBlockedDetectionBox, sizeOfPathBlockedDetectionBox);
+        lastPosition = transform.position;
+        return isStuck;
     }
 }
