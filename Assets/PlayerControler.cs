@@ -140,14 +140,17 @@ public class PlayerControler : MonoBehaviour
 
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.tag == "Obstacle" && !inIframe) {
-            PlayerStats.Instance.CurentHealthMod(-10);
+            PlayerStats.Instance.CurrentHealthMod(-10);
             inIframe = true;
+        }
+        if (coll.gameObject.tag == "Currency") {
+            PlayerStats.Instance.CurrencyMod(1);
         }
     }
 
     void OnTriggerStay(Collider coll) {
         if (coll.gameObject.tag == "Obstacle" && !inIframe) {
-            PlayerStats.Instance.CurentHealthMod(-10);
+            PlayerStats.Instance.CurrentHealthMod(-10);
             inIframe = true;
         }
     }
