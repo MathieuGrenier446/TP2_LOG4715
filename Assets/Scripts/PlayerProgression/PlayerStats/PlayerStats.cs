@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats
 {
@@ -131,6 +132,13 @@ public class PlayerStats
 
 	public void CurentHealthMod(float mod) {
 		currentHealth += mod;
+		if (currentHealth > maxHealth) {
+			currentHealth = maxHealth;
+		}
+		if(currentHealth <= 0) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			Instance = new PlayerStats(DEFAULT_ATTACK, DEFAULT_HEALTH);
+		}
 		NotifyUI();
 	}
 

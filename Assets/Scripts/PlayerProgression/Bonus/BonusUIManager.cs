@@ -71,7 +71,6 @@ public class BonusUIManager : MonoBehaviour
         PlayerStats.Instance *= PlayerStatsFactors.Instance;
         PlayerStatsFactors.Instance.ResetFactors();
         PlayerStats.Instance.NotifyUI();
-        Debug.Log($"new player stats: Health = {PlayerStats.Instance.GetHealth()}, Attack = {PlayerStats.Instance.GetAttack()}");
     }
 }
 
