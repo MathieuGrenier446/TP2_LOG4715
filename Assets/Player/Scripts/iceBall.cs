@@ -5,14 +5,14 @@ using UnityEngine;
 public class IceBall : MonoBehaviour
 {
     private Vector3 mousePos;
-    private Rigidbody rigidbody;
+    private Rigidbody entityRigidbody;
 
     [SerializeField] private float force = 5f;
     [SerializeField] private float lifeTime = 5f;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        entityRigidbody = GetComponent<Rigidbody>();
         Camera mainCam = Camera.main;
 
         mousePos = Input.mousePosition;
@@ -22,7 +22,7 @@ public class IceBall : MonoBehaviour
         Vector3 direction = worldMousePos - transform.position;
         direction.x = 0;
 
-        rigidbody.linearVelocity = direction.normalized * force;
+        entityRigidbody.linearVelocity = direction.normalized * force;
         StartCoroutine(DestroyAfterTime(lifeTime));
     }
     
