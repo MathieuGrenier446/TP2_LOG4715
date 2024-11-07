@@ -9,6 +9,7 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI attackText;
     public TextMeshProUGUI experienceText;
     public TextMeshProUGUI levelText;
+    public TextMeshProUGUI currencyText;
 
     private void Start()
     {
@@ -34,5 +35,6 @@ public class PlayerUI : MonoBehaviour
         healthText.text = $"{PlayerStats.Instance.GetHealth()}/{PlayerStats.Instance.GetMaxHealth()}";
         experienceText.text = $"{PlayerStats.Instance.GetExperience()}/{experienceToLevelUp}";
         levelText.text = "Level: " + PlayerStats.Instance.GetLevel();
+        currencyText.text = "Shellfish: " + PlayerStats.Instance.GetCurrency();
     }
 }

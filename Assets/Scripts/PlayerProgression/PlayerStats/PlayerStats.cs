@@ -22,18 +22,21 @@ public class PlayerStats
 
 	private uint level = 1;
 
+	private uint currency;
+
 	private float baseAttack;
 	private float currentHealth;
 	private float maxHealth;
 
 	private float experience;
 
-	public PlayerStats(float attack, float health, float experience = 0)
+	public PlayerStats(float attack, float health, float experience = 0, uint currency = 0)
 	{
 		baseAttack = attack;
 		maxHealth = health;
 		currentHealth = health;
 		this.experience = experience;
+		this.currency = currency;
 	}
 
 	public static PlayerStats Instance
@@ -129,8 +132,15 @@ public class PlayerStats
 	public float GetExperience() => experience;
 	public uint GetLevel() => level;
 
-	public void CurentHealthMod(float mod) {
+	public uint GetCurrency() => currency;
+
+	public void CurrentHealthMod(float mod) {
 		currentHealth += mod;
+		NotifyUI();
+	}
+
+	public void CurrencyMod(uint mod) {
+		currency += mod;
 		NotifyUI();
 	}
 
