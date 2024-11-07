@@ -5,7 +5,7 @@ public class RangedWeapon: MonoBehaviour
     private float timeSinceLastShot = 0;
     public bool canFire = true;
     public float ShootingCooldown;
-    [SerializeField]  Projectile projectile;
+    public Projectile projectile;
     [SerializeField] private Transform projectileExitPoint;
 
     void Update()

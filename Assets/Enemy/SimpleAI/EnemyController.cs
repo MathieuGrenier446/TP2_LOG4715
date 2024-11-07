@@ -45,6 +45,7 @@ public class EnemyController : MonoBehaviour
         this.StateMachine.Initialize(StateMachine.patrolState);
         _Rb = GetComponent<Rigidbody>();
         entityCollider = GetComponent<Collider>();
+        rangedWeapon.projectile.Damage = AttackDamage;
     }
 
     // Update is called once per frame
