@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour
     public Text experienceText;
     public Text levelText;
     public Text currencyText;
+    public Text ammoText;
 
     private void Start()
     {
@@ -36,5 +37,6 @@ public class PlayerUI : MonoBehaviour
         experienceText.text = $"{PlayerStats.Instance.GetExperience()}/{experienceToLevelUp}";
         levelText.text = "Level: " + PlayerStats.Instance.GetLevel();
         currencyText.text = "Seashell: " + PlayerStats.Instance.GetCurrency();
+        ammoText.text = "Ice Ball: " + PlayerStats.Instance.ammo;
     }
 }

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c0cc7cc1c5ebcfe438c224d80a14495b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_dust_green.mat
+  uploadId: 671810

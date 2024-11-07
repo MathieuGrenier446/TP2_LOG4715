@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cd783044c1ef3cd4cb7cac6dd6759c10
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_dust_yellow_danger.mat
+  uploadId: 671810

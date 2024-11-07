@@ -29,15 +29,18 @@ public class PlayerStats
 	private float currentHealth;
 	private float maxHealth;
 
+	public int ammo = 0;
+
 	private float experience;
 
-	public PlayerStats(float attack, float health, float experience = 0, int currency = 0)
+	public PlayerStats(float attack, float health, float experience = 0, int currency = 0, int ammo = 0)
 	{
 		baseAttack = attack;
 		maxHealth = health;
 		currentHealth = health;
 		this.experience = experience;
 		this.currency = currency;
+		this.ammo = ammo;
 	}
 
 	public static PlayerStats Instance

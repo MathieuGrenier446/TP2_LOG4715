@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: efb997d6f35b55d42a1c3d97a6778a5b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_damage_green.mat
+  uploadId: 671810

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f69dca869204c60499ff08f148214424
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_dirt_red.mat
+  uploadId: 671810

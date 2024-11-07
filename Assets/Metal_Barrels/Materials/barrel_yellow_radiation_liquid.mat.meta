@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 43513ddf1f24908499da7b0f458a3a34
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_yellow_radiation_liquid.mat
+  uploadId: 671810

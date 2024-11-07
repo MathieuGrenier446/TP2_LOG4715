@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d45caecabdfa08b4ba9f5d384c96febe
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/liquid_oil.mat
+  uploadId: 671810

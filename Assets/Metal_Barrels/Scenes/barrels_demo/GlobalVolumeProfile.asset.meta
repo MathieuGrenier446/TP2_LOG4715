@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8a5f1e64e81d0df43bf61eefb3882aa0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Scenes/barrels_demo/GlobalVolumeProfile.asset
+  uploadId: 671810

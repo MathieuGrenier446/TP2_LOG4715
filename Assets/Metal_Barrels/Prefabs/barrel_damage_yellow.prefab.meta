@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7a40d62def07eb141b7f10fcd2126dd1
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Prefabs/barrel_damage_yellow.prefab
+  uploadId: 671810

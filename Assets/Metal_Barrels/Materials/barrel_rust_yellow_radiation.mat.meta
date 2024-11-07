@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 831299c0a938fb145a999bee28f55a82
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_rust_yellow_radiation.mat
+  uploadId: 671810

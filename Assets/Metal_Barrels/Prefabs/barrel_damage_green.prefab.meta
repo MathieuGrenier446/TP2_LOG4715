@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b45af41df334f2a4595c56d6386b5fbe
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Prefabs/barrel_damage_green.prefab
+  uploadId: 671810

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 779f182c6bf42aa4f9d12e2e0e7e50de
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_dust_blue.mat
+  uploadId: 671810

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 10807d875b330d44abb6172a9b2f8be6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_rust_red.mat
+  uploadId: 671810

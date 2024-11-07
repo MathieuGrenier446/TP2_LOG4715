@@ -13,6 +13,10 @@ public class Shooting : MonoBehaviour
 
     public bool canFire;
     private float timer;
+	public float ammoCd = 2f;
+	public int maxAmmo = 10;
+	public bool hasRangedWeapon = true;
+	private float ammoTimer = 0;
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject iceBall;
     [SerializeField] private Transform ballTransform;
@@ -52,10 +56,25 @@ public class Shooting : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && canFire) {
+        if (Input.GetMouseButton(0) && canFire && PlayerStats.Instance.ammo > 0) {
             canFire = false;
             Instantiate(iceBall, ballTransform.position, Quaternion.identity);
+            PlayerStats.Instance.ammo -= 1;
+            PlayerStats.Instance.NotifyUI();
         }
+
+        handleAmmo();
     }
+
+    public void handleAmmo() {
+	    if(hasRangedWeapon) {
+        	ammoTimer += Time.deltaTime;
+            if(ammoTimer > ammoCd && PlayerStats.Instance.ammo < maxAmmo) {
+				PlayerStats.Instance.ammo += 1;
+                PlayerStats.Instance.NotifyUI();
+                ammoTimer = 0;
+            }
+		}
+	}
 }
 

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f0ca683bbabdf7746a69c2146bce7374
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_damage_red_point_A.mat
+  uploadId: 671810

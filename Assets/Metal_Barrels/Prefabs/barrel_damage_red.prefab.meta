@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 38d49730ab4a2f348afb07aa315577c4
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Prefabs/barrel_damage_red.prefab
+  uploadId: 671810

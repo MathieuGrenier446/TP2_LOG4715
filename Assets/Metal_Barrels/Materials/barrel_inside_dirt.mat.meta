@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 43f5b39613e32c147a4e15d3aca1ddc8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_inside_dirt.mat
+  uploadId: 671810

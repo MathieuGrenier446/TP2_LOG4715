@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac7a2ef4668c18b4d97714c117b48300
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/liquid_biohazard.mat
+  uploadId: 671810

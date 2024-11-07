@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public bool dashUnlocked = false;
     private bool canDash = true;
     private bool isDashing = false;
-    private float iFrame = 1f;
+    [SerializeField] private float iFrame = 1f;
     private float timer = 0;
     private bool inIframe = false;
     

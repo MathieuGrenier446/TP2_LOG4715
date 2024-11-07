@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5e7ddc317298dbb4c8340bc1f9f7c7bc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/ground.mat
+  uploadId: 671810
