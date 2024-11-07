@@ -5,11 +5,11 @@ public class PlayerUI : MonoBehaviour
 {
     public Slider healthBar;
     public Slider experienceBar;
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI attackText;
-    public TextMeshProUGUI experienceText;
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI currencyText;
+    public Text healthText;
+    public Text attackText;
+    public Text experienceText;
+    public Text levelText;
+    public Text currencyText;
 
     private void Start()
     {
@@ -35,6 +35,6 @@ public class PlayerUI : MonoBehaviour
         healthText.text = $"{PlayerStats.Instance.GetHealth()}/{PlayerStats.Instance.GetMaxHealth()}";
         experienceText.text = $"{PlayerStats.Instance.GetExperience()}/{experienceToLevelUp}";
         levelText.text = "Level: " + PlayerStats.Instance.GetLevel();
-        currencyText.text = "Shellfish: " + PlayerStats.Instance.GetCurrency();
+        currencyText.text = "Seashell: " + PlayerStats.Instance.GetCurrency();
     }
 }

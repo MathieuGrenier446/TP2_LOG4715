@@ -8,8 +8,8 @@ public class BonusUIManager : MonoBehaviour
     public GameObject bonusPanel;
     public Button firstBonusButton;
     public Button secondBonusButton;
-    private TMP_Text firstBonusText;
-    private TMP_Text secondBonusText;
+    private Text firstBonusText;
+    private Text secondBonusText;
     private Bonus firstBonus;
     private Bonus secondBonus;
 
@@ -29,8 +29,8 @@ public class BonusUIManager : MonoBehaviour
 
     private void Start()
     {
-        firstBonusText = firstBonusButton.GetComponentInChildren<TMP_Text>();
-        secondBonusText = secondBonusButton.GetComponentInChildren<TMP_Text>();
+        firstBonusText = firstBonusButton.GetComponentInChildren<Text>();
+        secondBonusText = secondBonusButton.GetComponentInChildren<Text>();
 
         firstBonusButton.onClick.AddListener(OnFirstBonusSelected);
         secondBonusButton.onClick.AddListener(OnSecondBonusSelected);
@@ -71,7 +71,6 @@ public class BonusUIManager : MonoBehaviour
         PlayerStats.Instance *= PlayerStatsFactors.Instance;
         PlayerStatsFactors.Instance.ResetFactors();
         PlayerStats.Instance.NotifyUI();
-        Debug.Log($"new player stats: Health = {PlayerStats.Instance.GetHealth()}, Attack = {PlayerStats.Instance.GetAttack()}");
     }
 }
 

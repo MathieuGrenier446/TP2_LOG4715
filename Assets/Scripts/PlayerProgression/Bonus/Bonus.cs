@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public class Bonus
@@ -33,11 +34,11 @@ public class Bonus
     {
         if (factor > 0.0f)
         {
-            firstText += $"{statName}: +{factor * 100}% ";
+            firstText += $"{statName}: +{(int)Math.Round(factor * 100)}% ";
         }
         else if (factor < 0.0f)
         {
-            secondText += $"{statName}: {factor * 100}% ";
+            secondText += $"{statName}: {(int)Math.Round(factor * 100)}% ";
         }
     }
 }	

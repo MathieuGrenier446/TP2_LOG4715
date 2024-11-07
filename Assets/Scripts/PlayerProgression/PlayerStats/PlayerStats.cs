@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats
 {
@@ -6,8 +7,8 @@ public class PlayerStats
 
 	private static PlayerStats instance;
 
-	private const float DEFAULT_ATTACK = 10;
-	private const float DEFAULT_HEALTH = 100;
+	public static float DEFAULT_ATTACK = 10;
+	public static float DEFAULT_HEALTH = 100;
 
 	private const uint BOSS_KILL_EXPERIENCE = 100;
 	private const uint CHECKPOINT_EXPERIENCE = 50;
@@ -22,7 +23,7 @@ public class PlayerStats
 
 	private uint level = 1;
 
-	private uint currency;
+	private int currency;
 
 	private float baseAttack;
 	private float currentHealth;
@@ -30,7 +31,7 @@ public class PlayerStats
 
 	private float experience;
 
-	public PlayerStats(float attack, float health, float experience = 0, uint currency = 0)
+	public PlayerStats(float attack, float health, float experience = 0, int currency = 0)
 	{
 		baseAttack = attack;
 		maxHealth = health;
@@ -132,14 +133,21 @@ public class PlayerStats
 	public float GetExperience() => experience;
 	public uint GetLevel() => level;
 
-	public uint GetCurrency() => currency;
+	public int GetCurrency() => currency;
 
 	public void CurrentHealthMod(float mod) {
 		currentHealth += mod;
+		if (currentHealth > maxHealth) {
+			currentHealth = maxHealth;
+		}
+		if(currentHealth <= 0) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			Instance = new PlayerStats(DEFAULT_ATTACK, DEFAULT_HEALTH);
+		}
 		NotifyUI();
 	}
 
-	public void CurrencyMod(uint mod) {
+	public void CurrencyMod(int mod) {
 		currency += mod;
 		NotifyUI();
 	}
