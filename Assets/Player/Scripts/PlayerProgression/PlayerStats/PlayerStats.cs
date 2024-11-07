@@ -12,7 +12,7 @@ public class PlayerStats
 
 	private const uint BOSS_KILL_EXPERIENCE = 100;
 	private const uint CHECKPOINT_EXPERIENCE = 50;
-	private const uint ENEMY_KILL_EXPERIENCE = 10;
+	private const uint ENEMY_KILL_EXPERIENCE = 30;
 
 	private const uint BASE_LEVEL_UP_EXPERIENCE = 50;
 

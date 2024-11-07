@@ -26,9 +26,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask WhatIsGround;
 
-    // Unit stats
-    [SerializeField]
-    int Health = 3;
     // Dash
     
     [SerializeField]

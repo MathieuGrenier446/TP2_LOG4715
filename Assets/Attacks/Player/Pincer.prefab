@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4349176382625358465}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.51, z: 0.517}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
@@ -82,8 +82,11 @@ MonoBehaviour:
   orbitDistance: 1
   orbitOffset: {x: 0, y: 0.5, z: 0}
   canFire: 1
+  ammoCd: 2
+  maxAmmo: 10
+  hasRangedWeapon: 1
   fireRate: 0.5
-  iceBall: {fileID: 0}
+  iceBall: {fileID: 6313023606960036489, guid: e6c609d226d4f5d46b988a5bd603ebfa, type: 3}
   ballTransform: {fileID: 5241318172788489124}
 --- !u!33 &928343004631599950
 MeshFilter:
@@ -100,7 +103,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4349176382625358465}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
