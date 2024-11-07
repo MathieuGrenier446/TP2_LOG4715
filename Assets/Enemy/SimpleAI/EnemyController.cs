@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
 
 
     public void Die(){
-        // TODO: give experience to player
+        PlayerStats.Instance.AwardEnemyKillExperience();
         Emote("Nooo!", Color.red);
         Destroy(gameObject);
     }
