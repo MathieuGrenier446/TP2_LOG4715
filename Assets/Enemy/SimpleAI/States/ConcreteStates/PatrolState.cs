@@ -22,7 +22,11 @@
         // per-frame logic, include condition to transition to a new state
         public void Update()
         {
-            if (enemy.isPlayerInAttackRange){
+            if(!enemy.isTouchingGround){
+                return;
+                
+            }
+            else if (enemy.isPlayerInAttackRange){
                 ExpressBigSuprise();
                 enemy.StateMachine.TransitionTo(enemy.StateMachine.attackState);
                 
@@ -44,6 +48,7 @@
         private void Patrol(){
             if (!enemy.isPathClear) {
                 enemy.animator.SetBool("isWalking", false);
+                enemy.animator.SetTrigger("isReacting");
                 enemy.StopMoving();
                 enemy.Reverse();
             } else {

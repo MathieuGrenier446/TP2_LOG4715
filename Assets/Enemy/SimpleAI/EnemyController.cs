@@ -18,9 +18,9 @@ public class EnemyController : MonoBehaviour
     public float Health = 100;
     public float MoveSpeed = 1f;
     public float AttackDamage = 5;
-    public float AngleFOV;
-    public float SightRange;
-    public float AttackRange;
+    public float AngleFOV = 120f;
+    public float SightRange = 5f;
+    public float AttackRange = 2f;
     public float wallDetectionRange = 0.2f;
     public RangedWeapon rangedWeapon;
     public float MaxFallDistance;
@@ -32,6 +32,8 @@ public class EnemyController : MonoBehaviour
     public bool isPlayerInAttackRange;
     [HideInInspector]
     public bool isPathClear;
+    [HideInInspector]
+    public bool isTouchingGround;
     private float direction;
     private float maxStuckDuration = 2;
     private float currentStuckDuration = 0;
@@ -51,6 +53,7 @@ public class EnemyController : MonoBehaviour
         direction = transform.forward.z;
         UpdateIsPlayerInSight();
         UpdateIsPathClear();
+        UpdateIsTouchingGround();
         this.StateMachine.Update();
     }
 
@@ -171,5 +174,14 @@ public class EnemyController : MonoBehaviour
         }
         lastPosition = transform.position;
         return isStuck;
+    }
+
+    private void UpdateIsTouchingGround(){
+        isTouchingGround = Physics.Raycast(transform.position, Vector3.down, 1f, WhatIsGround);
+        if(!isTouchingGround){
+            animator.SetBool("isFalling", true);
+        } else {
+            animator.SetBool("isFalling", false);
+        }
     }
 }

@@ -24,6 +24,9 @@
 
         public void Update()
         {
+            if(!enemy.isTouchingGround){
+                return;
+            }
             if (!enemy.isPlayerInSight)
             {
                 ExpressMildConfusion();

@@ -196,7 +196,7 @@ MonoBehaviour:
   Health: 100
   MoveSpeed: 1
   AttackDamage: 5
-  AngleFOV: 90
+  AngleFOV: 120
   SightRange: 10
   AttackRange: 4
   wallDetectionRange: 0.2
@@ -206,6 +206,7 @@ MonoBehaviour:
   isPlayerInSight: 0
   isPlayerInAttackRange: 0
   isPathClear: 0
+  isTouchingGround: 0
 --- !u!136 &8581383052214119982
 CapsuleCollider:
   m_ObjectHideFlags: 0
