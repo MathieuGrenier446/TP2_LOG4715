@@ -559,7 +559,6 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  Health: 3
   DashForce: 24
   DashCooldown: 1
   DashingTime: 0.2
@@ -1353,12 +1352,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 455677749}
-    - target: {fileID: 8863283199691551703, guid: b161a6c61683c43448d824cce175cf19,
-        type: 3}
-      propertyPath: iceBall
-      value: 
-      objectReference: {fileID: 6313023606960036489, guid: e6c609d226d4f5d46b988a5bd603ebfa,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1494,22 +1487,32 @@ PrefabInstance:
     - target: {fileID: 4887643799807213753, guid: e0c570a264c2e1941aa36ad98298c97c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.561
       objectReference: {fileID: 0}
     - target: {fileID: 4887643799807213753, guid: e0c570a264c2e1941aa36ad98298c97c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887643799807213753, guid: e0c570a264c2e1941aa36ad98298c97c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -55.0503
       objectReference: {fileID: 0}
     - target: {fileID: 4952761252508989470, guid: e0c570a264c2e1941aa36ad98298c97c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.561
       objectReference: {fileID: 0}
     - target: {fileID: 4952761252508989470, guid: e0c570a264c2e1941aa36ad98298c97c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952761252508989470, guid: e0c570a264c2e1941aa36ad98298c97c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -55.0503
       objectReference: {fileID: 0}
     - target: {fileID: 7738192146520146884, guid: e0c570a264c2e1941aa36ad98298c97c,
         type: 3}
