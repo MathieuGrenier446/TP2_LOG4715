@@ -31,9 +31,9 @@ public class PlayerStats
 
 	public int ammo = 0;
 
-	private float experience;
+	private uint experience;
 
-	public PlayerStats(float attack, float health, float experience = 0, int currency = 0, int ammo = 0)
+	public PlayerStats(float attack, float health, uint experience = 0, int currency = 0, int ammo = 0)
 	{
 		baseAttack = attack;
 		maxHealth = health;
@@ -94,7 +94,7 @@ public class PlayerStats
 		AwardExperience(ENEMY_KILL_EXPERIENCE);
 	}
 
-	private void AwardExperience(float experience)
+	private void AwardExperience(uint experience)
 	{
 		this.experience += experience;
 		CheckForLevelUp();
@@ -103,7 +103,7 @@ public class PlayerStats
 
 	private void CheckForLevelUp()
     {
-        float experienceToLevelUp = CalculateExperienceToLevelUp();
+        uint experienceToLevelUp = CalculateExperienceToLevelUp();
         while (experience >= experienceToLevelUp)
         {
             experience -= experienceToLevelUp;
@@ -112,9 +112,9 @@ public class PlayerStats
         }
     }
 
-    public float CalculateExperienceToLevelUp()
+    public uint CalculateExperienceToLevelUp()
     {
-        return BASE_LEVEL_UP_EXPERIENCE * (float)Math.Pow(level, EXPONENTIAL_FACTOR);
+        return BASE_LEVEL_UP_EXPERIENCE * (uint)Math.Pow(level, EXPONENTIAL_FACTOR);
     }
 
     private void LevelUp()
