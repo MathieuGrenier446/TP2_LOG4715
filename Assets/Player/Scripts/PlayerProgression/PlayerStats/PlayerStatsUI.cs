@@ -25,15 +25,15 @@ public class PlayerUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        float experienceToLevelUp = (uint)PlayerStats.Instance.CalculateExperienceToLevelUp();
+        float experienceToLevelUp = PlayerStats.Instance.CalculateExperienceToLevelUp();
         healthBar.maxValue = PlayerStats.Instance.GetMaxHealth();
         healthBar.value = PlayerStats.Instance.GetHealth();
 
         experienceBar.maxValue = experienceToLevelUp;
         experienceBar.value = PlayerStats.Instance.GetExperience();
 
-        attackText.text = "Attack: " + PlayerStats.Instance.GetAttack();
-        healthText.text = $"{PlayerStats.Instance.GetHealth()}/{PlayerStats.Instance.GetMaxHealth()}";
+        attackText.text = "Attack: " + (uint)PlayerStats.Instance.GetAttack();
+        healthText.text = $"{(uint)PlayerStats.Instance.GetHealth()}/{(uint)PlayerStats.Instance.GetMaxHealth()}";
         experienceText.text = $"{PlayerStats.Instance.GetExperience()}/{experienceToLevelUp}";
         levelText.text = "Level: " + PlayerStats.Instance.GetLevel();
         currencyText.text = "Seashell: " + PlayerStats.Instance.GetCurrency();
