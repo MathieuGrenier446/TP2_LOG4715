@@ -32,8 +32,8 @@ public class TreasureChest : MonoBehaviour
         isOpened = true;
 
         playerController.dashUnlocked = true;
-        PlayerStats.Instance.AwardCheckpointExperience();
         DisplayText(dashUnlockedText);
+        PlayerStats.Instance.AwardCheckpointExperience();
     }
 
     private void checkIsPlayerNearby()
@@ -45,7 +45,7 @@ public class TreasureChest : MonoBehaviour
     {
         Text.gameObject.SetActive(true);   
         StartCoroutine(FloatAndFadeCoroutine(Text));
-        Destroy(Text.gameObject);   
+         
     }
 
     private IEnumerator FloatAndFadeCoroutine(TextMeshProUGUI Text)
@@ -69,5 +69,6 @@ public class TreasureChest : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null; 
         }
+        Destroy(Text.gameObject);  
     }
 }
