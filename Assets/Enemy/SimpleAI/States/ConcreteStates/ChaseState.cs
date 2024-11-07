@@ -40,15 +40,18 @@
 
         public void Exit()
         {
+            enemy.animator.SetBool("isRunning", false);
             enemy.MoveSpeed = originalMoveSpeed;
             enemy.AngleFOV = originalFOV;
         }
 
         private void ChasePlayer(){
+            enemy.animator.SetBool("isRunning", true);
             enemy.GoForward();
         }
 
         private void ExpressMildConfusion(){
+            enemy.animator.SetTrigger("isReacting");
             enemy.Emote("...?", Color.yellow);
         }
     }

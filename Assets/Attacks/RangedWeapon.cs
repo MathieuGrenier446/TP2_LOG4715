@@ -3,7 +3,7 @@ using UnityEngine;
 public class RangedWeapon: MonoBehaviour
 {
     private float timeSinceLastShot = 0;
-    private bool canFire = true;
+    public bool canFire = true;
     public float ShootingCooldown;
     [SerializeField]  Projectile projectile;
     [SerializeField] private Transform projectileExitPoint;

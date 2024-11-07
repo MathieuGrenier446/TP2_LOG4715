@@ -12,7 +12,7 @@ public class TreasureChest : MonoBehaviour
     private bool isPlayerNearby = false;
     public LayerMask whatIsPlayer;
     public float detectionRadius = 3.0f;
-    public PlayerControler playerControler;
+    public PlayerController playerController;
     [SerializeField] TextMeshProUGUI dashUnlockedText;  
 
     void Update()
@@ -31,7 +31,7 @@ public class TreasureChest : MonoBehaviour
         coins.SetActive(true);        
         isOpened = true;
 
-        playerControler.dashUnlocked = true;
+        playerController.dashUnlocked = true;
         PlayerStats.Instance.AwardCheckpointExperience();
         DisplayText(dashUnlockedText);
     }

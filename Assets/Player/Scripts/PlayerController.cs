@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     // Déclaration des constantes
     private static readonly Vector3 FlipRotation = new Vector3(0, 180, 0);
@@ -145,7 +145,7 @@ public class PlayerControler : MonoBehaviour
             inIframe = true;
         } else if (coll.CompareTag("Projectile")){
             Projectile projectile = coll.gameObject.GetComponent<Projectile>();
-            PlayerStats.Instance.CurentHealthMod(-projectile.Damage);
+            PlayerStats.Instance.CurrentHealthMod(-projectile.Damage);
             if (PlayerStats.Instance.GetHealth() == 0){
                 Destroy(gameObject);
             }

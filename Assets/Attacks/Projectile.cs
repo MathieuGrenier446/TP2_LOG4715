@@ -21,13 +21,13 @@ public class Projectile: MonoBehaviour
     public void SetDirection(Vector3 newDirection)
     {
         direction = newDirection;
-    }
+    }   
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerStats.Instance.CurentHealthMod(-Damage);
+            PlayerStats.Instance.CurrentHealthMod(-Damage);
         } else if (other.CompareTag("Enemy")){
             EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
             enemy.TakeDamage(Damage);

@@ -7,9 +7,12 @@ public class EnemyController : MonoBehaviour
     public EnemyStateMachine StateMachine;
     Rigidbody _Rb { get; set; }
     Collider entityCollider;
+    public
+    Animator animator;
     public LayerMask WhatIsPlayer;
     public LayerMask WhatIsGround;
     public LayerMask WhatIsWall;
+    public LayerMask WhatIsEnemy;
     public TextMesh EmoteText;
     public float ChaseMoveSpeedMultiplier = 2.0f;
     public float Health = 100;
@@ -66,6 +69,7 @@ public class EnemyController : MonoBehaviour
         if (!isPlayerInSight){
             Reverse();
         }
+        animator.SetTrigger("isHit");
         Emote("Ouch!", Color.red);
     }
     
@@ -107,7 +111,7 @@ public class EnemyController : MonoBehaviour
         float distanceToTarget = Vector3.Distance(transform.position, playerCollider.transform.position);
         this.isPlayerInAttackRange = distanceToTarget <=AttackRange;
         this.isPlayerInSight = true;
-        PlayerControler player = playerCollider.gameObject.GetComponent<PlayerControler>();
+        PlayerController player = playerCollider.gameObject.GetComponent<PlayerController>();
         playerPosition = player.Target.position;
         return;
     }
@@ -123,6 +127,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public void AttackPlayer() {
+        if (rangedWeapon.canFire) animator.SetTrigger("isAttacking");
         this.rangedWeapon.ShootAt(
             this.playerPosition
         );
@@ -150,8 +155,8 @@ public class EnemyController : MonoBehaviour
 
     private bool IsPathBlocked(){
         Vector3 halfDimensionsOfBox = new Vector3(0.0f, entityCollider.bounds.size.y*0.8f, wallDetectionRange/2);
-        Vector3 centerOfBox = new Vector3(entityCollider.bounds.center.x, entityCollider.bounds.center.y, entityCollider.bounds.center.z+(entityCollider.bounds.extents.z+wallDetectionRange/2)*direction);
-        return Physics.CheckBox(centerOfBox, halfDimensionsOfBox, Quaternion.identity, WhatIsWall);
+        Vector3 centerOfBox = new Vector3(entityCollider.bounds.center.x, entityCollider.bounds.center.y, entityCollider.bounds.center.z+(entityCollider.bounds.extents.z+wallDetectionRange/2+0.1f)*direction);
+        return Physics.CheckBox(centerOfBox, halfDimensionsOfBox, Quaternion.identity, WhatIsWall | WhatIsEnemy);
     }
     private bool IsStuck(){
         bool isStuckSinceLastFrame = transform.position == lastPosition;

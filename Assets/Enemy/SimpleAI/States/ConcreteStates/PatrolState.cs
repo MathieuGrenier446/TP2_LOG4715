@@ -36,25 +36,30 @@
 
         public void Exit()
         {
+            enemy.animator.SetBool("isWalking", false);
             // code that runs when we exit the state
             Debug.Log("Exiting Patrol State");
         }
 
         private void Patrol(){
             if (!enemy.isPathClear) {
+                enemy.animator.SetBool("isWalking", false);
                 enemy.StopMoving();
                 enemy.Reverse();
             } else {
+                enemy.animator.SetBool("isWalking", true);
                 enemy.GoForward();
             }
         }
 
         
         private void ExpressSuprise(){
+            enemy.animator.SetTrigger("isReacting");
             enemy.Emote("!", Color.red);
         }
 
         private void ExpressBigSuprise(){
+            enemy.animator.SetTrigger("isReacting");
             enemy.Emote("!!!", Color.red);
         }
     }
