@@ -7,8 +7,8 @@ public class PlayerStats
 
 	private static PlayerStats instance;
 
-	private const float DEFAULT_ATTACK = 10;
-	private const float DEFAULT_HEALTH = 100;
+	public static float DEFAULT_ATTACK = 10;
+	public static float DEFAULT_HEALTH = 100;
 
 	private const uint BOSS_KILL_EXPERIENCE = 100;
 	private const uint CHECKPOINT_EXPERIENCE = 50;
@@ -23,21 +23,24 @@ public class PlayerStats
 
 	private uint level = 1;
 
-	private uint currency;
+	private int currency;
 
 	private float baseAttack;
 	private float currentHealth;
 	private float maxHealth;
 
+	public int ammo = 0;
+
 	private float experience;
 
-	public PlayerStats(float attack, float health, float experience = 0, uint currency = 0)
+	public PlayerStats(float attack, float health, float experience = 0, int currency = 0, int ammo = 0)
 	{
 		baseAttack = attack;
 		maxHealth = health;
 		currentHealth = health;
 		this.experience = experience;
 		this.currency = currency;
+		this.ammo = ammo;
 	}
 
 	public static PlayerStats Instance
@@ -133,7 +136,7 @@ public class PlayerStats
 	public float GetExperience() => experience;
 	public uint GetLevel() => level;
 
-	public uint GetCurrency() => currency;
+	public int GetCurrency() => currency;
 
 	public void CurrentHealthMod(float mod) {
 		currentHealth += mod;
@@ -147,7 +150,7 @@ public class PlayerStats
 		NotifyUI();
 	}
 
-	public void CurrencyMod(uint mod) {
+	public void CurrencyMod(int mod) {
 		currency += mod;
 		NotifyUI();
 	}

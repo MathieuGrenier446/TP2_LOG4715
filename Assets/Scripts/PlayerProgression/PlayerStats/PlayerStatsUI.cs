@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 public class PlayerUI : MonoBehaviour
 {
     public Slider healthBar;
@@ -10,6 +9,8 @@ public class PlayerUI : MonoBehaviour
     public Text attackText;
     public Text experienceText;
     public Text levelText;
+    public Text currencyText;
+    public Text ammoText;
 
     private void Start()
     {
@@ -25,19 +26,17 @@ public class PlayerUI : MonoBehaviour
     private void UpdateUI()
     {
         float experienceToLevelUp = (uint)PlayerStats.Instance.CalculateExperienceToLevelUp();
-        float maxHealth = PlayerStats.Instance.GetMaxHealth();
-        float currentHealth = PlayerStats.Instance.GetHealth();
-
-        healthBar.maxValue = maxHealth;
-        healthBar.value = currentHealth;
+        healthBar.maxValue = PlayerStats.Instance.GetMaxHealth();
+        healthBar.value = PlayerStats.Instance.GetHealth();
 
         experienceBar.maxValue = experienceToLevelUp;
         experienceBar.value = PlayerStats.Instance.GetExperience();
 
-        attackText.text = "Attack: " + (uint)Math.Round(PlayerStats.Instance.GetAttack());
-        healthText.text = $"{(uint)Math.Round(currentHealth)}/{(uint)Math.Round(maxHealth)}";
+        attackText.text = "Attack: " + PlayerStats.Instance.GetAttack();
+        healthText.text = $"{PlayerStats.Instance.GetHealth()}/{PlayerStats.Instance.GetMaxHealth()}";
         experienceText.text = $"{PlayerStats.Instance.GetExperience()}/{experienceToLevelUp}";
         levelText.text = "Level: " + PlayerStats.Instance.GetLevel();
         currencyText.text = "Seashell: " + PlayerStats.Instance.GetCurrency();
+        ammoText.text = "Ice Ball: " + PlayerStats.Instance.ammo;
     }
 }

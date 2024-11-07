@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 06962f70f4f986340946e0edbaa3fad3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233781
+  packageName: Metal Barrels
+  packageVersion: 1.1
+  assetPath: Assets/Metal_Barrels/Materials/barrel_dust_green_biohazard.mat
+  uploadId: 671810

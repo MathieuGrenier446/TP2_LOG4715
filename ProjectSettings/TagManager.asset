@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Obstacle
+  - Enemy
+  - Projectile
   - Currency
   layers:
   - Default
@@ -14,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Wall
   - Floor
   - 
   - 
