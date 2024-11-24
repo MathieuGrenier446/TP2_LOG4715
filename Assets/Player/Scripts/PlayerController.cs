@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : SoundEmitter
 {
     // Déclaration des constantes
     private static readonly Vector3 FlipRotation = new Vector3(0, 180, 0);
@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     private bool canDash = true;
     private bool isDashing = false;
     [SerializeField] private float iFrame = 1f;
+
+    [SerializeField] private AudioClip damageTakenSound;
     private float timer = 0;
     private bool inIframe = false;
     
@@ -138,11 +140,11 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.tag == "Obstacle" && !inIframe) {
-            PlayerStats.Instance.CurrentHealthMod(-10);
+            TakeDamage(10);
             inIframe = true;
         } else if (coll.CompareTag("Projectile")){
             Projectile projectile = coll.gameObject.GetComponent<Projectile>();
-            PlayerStats.Instance.CurrentHealthMod(-projectile.Damage);
+            TakeDamage(projectile.Damage);
             if (PlayerStats.Instance.GetHealth() == 0){
                 Destroy(gameObject);
             }
@@ -154,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay(Collider coll) {
         if (coll.gameObject.tag == "Obstacle" && !inIframe) {
-            PlayerStats.Instance.CurrentHealthMod(-10);
+            TakeDamage(10);
             inIframe = true;
         }
     }
@@ -165,6 +167,12 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+    }
+
+    private void TakeDamage(float healthLoss)
+    {
+        PlayerStats.Instance.CurrentHealthMod(-1*healthLoss);
+        PlaySound(damageTakenSound);
     }
 
     private IEnumerator Dash()
