@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class TreasureChest : MonoBehaviour
+public class TreasureChest : SoundEmitter
 {
     public GameObject closedChest;
     public GameObject openChest;
@@ -13,8 +13,7 @@ public class TreasureChest : MonoBehaviour
     public LayerMask whatIsPlayer;
     public float detectionRadius = 3.0f;
     public PlayerController playerController;
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] private AudioClip openSound;
     [SerializeField] TextMeshProUGUI dashUnlockedText;
 
     void Start()
@@ -33,7 +32,7 @@ public class TreasureChest : MonoBehaviour
 
     private void OpenChest()
     {
-        audioSource.PlayOneShot(pickUpSound);
+        PlaySound(openSound);
         closedChest.SetActive(false);
         openChest.SetActive(true);   
         coins.SetActive(true);        

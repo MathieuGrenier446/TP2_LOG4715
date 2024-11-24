@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : SoundEmitter
 {
     public EnemyStateMachine StateMachine;
     Rigidbody _Rb { get; set; }
@@ -40,7 +40,6 @@ public class EnemyController : MonoBehaviour
     private float maxStuckDuration = 2;
     private float currentStuckDuration = 0;
     private Vector3 lastPosition;
-    private AudioSource audioSource;
     
     void Awake()
     {
@@ -64,11 +63,10 @@ public class EnemyController : MonoBehaviour
 
 
     public void Die(){
-        audioSource.PlayOneShot(deathSound);
         PlayerStats.Instance.AwardEnemyKillExperience();
         Emote("Nooo!", Color.red);
-        // Could hide visual when waiting for sound but it feels natural to have it visible while dying
-        Destroy(gameObject, deathSound.length);
+        // TODO Should we not hide visuals
+        PlaySoundAndDestroy(deathSound);
     }
 
     public void TakeDamage(float damage){
@@ -120,7 +118,7 @@ public class EnemyController : MonoBehaviour
         }
         float distanceToTarget = Vector3.Distance(transform.position, playerCollider.transform.position);
         this.isPlayerInAttackRange = distanceToTarget <=AttackRange;
-        if(!isPlayerInSight) audioSource.PlayOneShot(supriseSound);
+        if(!isPlayerInSight) PlaySound(supriseSound);
         this.isPlayerInSight = true;
         PlayerController player = playerCollider.gameObject.GetComponent<PlayerController>();
         playerPosition = player.Target.position;

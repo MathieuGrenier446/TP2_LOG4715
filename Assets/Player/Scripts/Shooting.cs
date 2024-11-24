@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class Shooting : SoundEmitter
 {
     [SerializeField] private Transform player;
     [SerializeField] private float orbitDistance = 1.5f;
@@ -17,7 +17,6 @@ public class Shooting : MonoBehaviour
 	public int maxAmmo = 10;
 	public bool hasRangedWeapon = true;
 	private float ammoTimer = 0;
-    private AudioSource audioSource;
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject iceBall;
@@ -62,7 +61,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetMouseButton(0) && canFire && PlayerStats.Instance.ammo > 0) {
             canFire = false;
             Instantiate(iceBall, ballTransform.position, Quaternion.identity);
-            audioSource.PlayOneShot(shootSound);
+            PlaySound(shootSound);
             PlayerStats.Instance.ammo -= 1;
             PlayerStats.Instance.NotifyUI();
         }

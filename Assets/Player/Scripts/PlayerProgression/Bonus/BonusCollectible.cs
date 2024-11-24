@@ -1,14 +1,12 @@
 using UnityEngine;
 
-public class BonusCollectible : MonoBehaviour
+public class BonusCollectible : SoundEmitter
 {
     public float rotationSpeed = 180.0f;
     private BonusUIManager bonusUIManager;
-    private AudioSource audioSource;
     [SerializeField] private AudioClip pickUpSound;
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         bonusUIManager = BonusUIManager.Instance;
     }
     private void Update()
@@ -19,7 +17,6 @@ public class BonusCollectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            audioSource.PlayOneShot(pickUpSound);
             // TODO no need to make 2 objects just have singleton
             Bonus bonus1 = new BonusGenerator().GenerateBonus();
             Bonus bonus2 = new BonusGenerator().GenerateBonus();
@@ -31,19 +28,8 @@ public class BonusCollectible : MonoBehaviour
             }
 
             bonusUIManager.ShowBonusOptions(bonus1, bonus2);
-            HideVisuals();
+            PlaySoundAndDestroy(pickUpSound);
             Destroy(gameObject, pickUpSound.length);
-        }
-    }
-
-    // The item must stay alive while the sound is playing, but we still want to make it invisible when the sound is playing
-    private void HideVisuals()
-    {
-        // Could only get MeshRenderer components and disable it, but this is more modulable.
-        Renderer[] renderers = GetComponentsInChildren<Renderer>();
-        foreach (Renderer renderer in renderers)
-        {
-            renderer.enabled = false;
         }
     }
 }
