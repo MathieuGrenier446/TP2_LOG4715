@@ -13,7 +13,14 @@ public class TreasureChest : MonoBehaviour
     public LayerMask whatIsPlayer;
     public float detectionRadius = 3.0f;
     public PlayerController playerController;
-    [SerializeField] TextMeshProUGUI dashUnlockedText;  
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] TextMeshProUGUI dashUnlockedText;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -26,6 +33,7 @@ public class TreasureChest : MonoBehaviour
 
     private void OpenChest()
     {
+        audioSource.PlayOneShot(pickUpSound);
         closedChest.SetActive(false);
         openChest.SetActive(true);   
         coins.SetActive(true);        
