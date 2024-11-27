@@ -661,6 +661,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquidEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3863106871945829896, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ef04a3f519038394491c0501eec1b761, type: 3}
+    - target: {fileID: 3863106871945829896, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: supriseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 63967db295994c14392bc58026d63fac, type: 3}
+    - target: {fileID: 3863106871945829896, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: searchingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c168b998a1f441439aca98b939ff64d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

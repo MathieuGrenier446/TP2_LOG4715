@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class Currency : MonoBehaviour
+public class Currency : SoundEmitter
 {
     public float rotationSpeed = 180.0f;
+    [SerializeField] private AudioClip pickUpSound;
 
     private void Update()
     {
@@ -10,6 +11,6 @@ public class Currency : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        PlaySoundAndDestroy(pickUpSound);
     }
 }

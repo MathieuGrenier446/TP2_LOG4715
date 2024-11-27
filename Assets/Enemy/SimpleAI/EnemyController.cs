@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : SoundEmitter
 {
     public EnemyStateMachine StateMachine;
     Rigidbody _Rb { get; set; }
@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
     public float AttackRange = 2f;
     public float wallDetectionRange = 0.2f;
     public RangedWeapon rangedWeapon;
+    public AudioClip supriseSound;
+    public AudioClip deathSound;
     public float MaxFallDistance;
     [HideInInspector]
     public Vector3 playerPosition;
@@ -45,6 +47,7 @@ public class EnemyController : MonoBehaviour
         this.StateMachine.Initialize(StateMachine.patrolState);
         _Rb = GetComponent<Rigidbody>();
         entityCollider = GetComponent<Collider>();
+        audioSource = GetComponent<AudioSource>();
         rangedWeapon.projectile.Damage = AttackDamage;
     }
 
@@ -62,7 +65,8 @@ public class EnemyController : MonoBehaviour
     public void Die(){
         PlayerStats.Instance.AwardEnemyKillExperience();
         Emote("Nooo!", Color.red);
-        Destroy(gameObject);
+        // TODO Should we not hide visuals
+        PlaySoundAndDestroy(deathSound);
     }
 
     public void TakeDamage(float damage){
@@ -114,6 +118,7 @@ public class EnemyController : MonoBehaviour
         }
         float distanceToTarget = Vector3.Distance(transform.position, playerCollider.transform.position);
         this.isPlayerInAttackRange = distanceToTarget <=AttackRange;
+        if(!isPlayerInSight) PlaySound(supriseSound);
         this.isPlayerInSight = true;
         PlayerController player = playerCollider.gameObject.GetComponent<PlayerController>();
         playerPosition = player.Target.position;

@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class BonusCollectible : MonoBehaviour
+public class BonusCollectible : SoundEmitter
 {
     public float rotationSpeed = 180.0f;
     private BonusUIManager bonusUIManager;
+    [SerializeField] private AudioClip pickUpSound;
     private void Start()
     {
         bonusUIManager = BonusUIManager.Instance;
@@ -27,7 +28,8 @@ public class BonusCollectible : MonoBehaviour
             }
 
             bonusUIManager.ShowBonusOptions(bonus1, bonus2);
-            Destroy(gameObject);
+            PlaySoundAndDestroy(pickUpSound);
+            Destroy(gameObject, pickUpSound.length);
         }
     }
 }
