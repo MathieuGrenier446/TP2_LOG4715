@@ -15,12 +15,18 @@ public class MainMenu : MonoBehaviour
     public Button backButton;
     public Button quitButton;
 
+    public AudioSource menuTheme;
+
     public Text upgradeInfo;
 
     public string upgradeFeedback = "";
 
     public string playerStats;
 
+    private bool isGameStart;
+
+    public Camera menuCamera;
+    public Camera mainCamera;
 
     private void Awake()
     {
@@ -36,11 +42,14 @@ public class MainMenu : MonoBehaviour
     }
 
     private void Start() {
+        SwitchToMenuCamera();
+        playButton.onClick.AddListener(StartGame);
         upgradesButton.onClick.AddListener(OpenUpgrades);
         upgradeAttackButton.onClick.AddListener(UpgradeAttack);
         upgradeHealthButton.onClick.AddListener(UpgradeHealth);
         backButton.onClick.AddListener(Back);
-
+        isGameStart = false;
+        menuTheme.Play();
         menuPanel.SetActive(true);
         upgradesPanel.SetActive(false);
     }
@@ -54,6 +63,14 @@ public class MainMenu : MonoBehaviour
     private void OpenUpgrades() {
         menuPanel.SetActive(false);
         upgradesPanel.SetActive(true);
+    }
+    public void StartGame()
+    {
+        menuPanel.SetActive(false);
+        upgradesPanel.SetActive(false);
+        isGameStart = true;
+        SwitchToMainCamera();
+        menuTheme.Stop();
     }
 
     private void Back() {
@@ -87,6 +104,40 @@ public class MainMenu : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    public void SwitchToMenuCamera()
+    {
+        if (mainCamera != null)
+        {
+            mainCamera.GetComponent<AudioListener>().enabled = false;
+            AudioListener listener = menuCamera.GetComponent<AudioListener>();
+            if (listener != null)
+            {
+                listener.enabled = true;
+            }
+        }
+        menuCamera.gameObject.SetActive(true);
+        mainCamera.gameObject.SetActive(false);
+    }
+
+    public void SwitchToMainCamera()
+    {
+        if (menuCamera != null)
+        {
+            menuCamera.GetComponent<AudioListener>().enabled = false;
+            AudioListener listener = mainCamera.GetComponent<AudioListener>();
+            if (listener != null)
+            {
+                listener.enabled = true;
+            }
+        }
+        menuCamera.gameObject.SetActive(false);
+        mainCamera.gameObject.SetActive(true);
+    }
+
+    public bool getIsGameStart() {
+        return isGameStart;
     }
 }
 

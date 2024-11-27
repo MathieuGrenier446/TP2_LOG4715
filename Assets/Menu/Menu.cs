@@ -17,6 +17,8 @@ public class Menu : MonoBehaviour
 
     public Text upgradeInfo;
 
+    MainMenu mainMenu;
+
     public string upgradeFeedback = "";
 
     public string playerStats;
@@ -38,6 +40,7 @@ public class Menu : MonoBehaviour
     }
 
     private void Start() {
+        mainMenu = MainMenu.Instance;
         resumeButton.onClick.AddListener(Resume);
         upgradesButton.onClick.AddListener(OpenUpgrades);
         upgradeAttackButton.onClick.AddListener(UpgradeAttack);
@@ -54,7 +57,7 @@ public class Menu : MonoBehaviour
         playerStats = "Starting Attack: " + PlayerStats.DEFAULT_ATTACK + "\n" + "Starting Health: " + PlayerStats.DEFAULT_HEALTH + "\n" + "Seashells: " + PlayerStats.Instance.GetCurrency();
         upgradeInfo.text = playerStats + upgradeFeedback;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && mainMenu.getIsGameStart())
         {
             if (isPaused)
                 ResumeGame();

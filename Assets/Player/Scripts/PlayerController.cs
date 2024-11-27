@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     Camera _MainCamera { get; set; }
     public Transform Target;
 
+    MainMenu mainMenu;
+
     // Valeurs exposées
     [SerializeField]
     float MoveSpeed = 5.0f;
@@ -56,11 +58,16 @@ public class PlayerController : MonoBehaviour
     {
         _Grounded = false;
         _Flipped = false;
+        mainMenu = MainMenu.Instance;
     }
 
     // Vérifie les entrées de commandes du joueur
     void Update()
     {
+        if (!mainMenu.getIsGameStart())
+        {
+            return;
+        }
         if (isDashing){
             return;
         }
