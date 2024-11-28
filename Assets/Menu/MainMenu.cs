@@ -17,6 +17,8 @@ public class MainMenu : MonoBehaviour
 
     public AudioSource menuTheme;
 
+    public AudioSource gameTheme;
+
     public Text upgradeInfo;
 
     public string upgradeFeedback = "";
@@ -50,6 +52,7 @@ public class MainMenu : MonoBehaviour
         backButton.onClick.AddListener(Back);
         isGameStart = false;
         menuTheme.Play();
+        gameTheme.Stop();
         menuPanel.SetActive(true);
         upgradesPanel.SetActive(false);
     }
@@ -71,6 +74,7 @@ public class MainMenu : MonoBehaviour
         isGameStart = true;
         SwitchToMainCamera();
         menuTheme.Stop();
+        gameTheme.Play();
     }
 
     private void Back() {

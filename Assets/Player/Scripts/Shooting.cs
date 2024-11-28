@@ -8,7 +8,7 @@ public class Shooting : SoundEmitter
     [SerializeField] private float orbitDistance = 1.5f;
     [SerializeField] private Vector3 orbitOffset = new Vector3(0, 0.5f, 0);
 
-    private Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
     private Vector3 mousePos;
 
     public bool canFire;
@@ -21,15 +21,20 @@ public class Shooting : SoundEmitter
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject iceBall;
     [SerializeField] private Transform ballTransform;
+    private MainMenu mainMenu;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        mainCamera = Camera.main;
+        mainMenu = MainMenu.Instance;
     }
 
     void Update()
     {
+        if (!mainMenu.getIsGameStart())
+        {
+            return;
+        }
         if (player == null) return;
 
         mousePos = Input.mousePosition;
