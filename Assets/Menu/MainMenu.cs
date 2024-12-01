@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -50,6 +50,7 @@ public class MainMenu : MonoBehaviour
         upgradeAttackButton.onClick.AddListener(UpgradeAttack);
         upgradeHealthButton.onClick.AddListener(UpgradeHealth);
         backButton.onClick.AddListener(Back);
+        quitButton.onClick.AddListener(Quit);
         isGameStart = false;
         menuTheme.Play();
         gameTheme.Stop();
@@ -75,11 +76,13 @@ public class MainMenu : MonoBehaviour
         SwitchToMainCamera();
         menuTheme.Stop();
         gameTheme.Play();
+        PlayerStats.Instance = new PlayerStats(PlayerStats.DEFAULT_ATTACK, PlayerStats.DEFAULT_HEALTH);
     }
 
     private void Back() {
         menuPanel.SetActive(true);
         upgradesPanel.SetActive(false);
+        upgradeFeedback = "";
     }
 
     public void UpgradeAttack() {
@@ -103,7 +106,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public bool canPurchase() {
-        if(PlayerStats.Instance.GetCurrency() >= 5){
+        if(PlayerStats.Instance.GetCurrency() >= 1){
             return true;
         } else {
             return false;
@@ -123,6 +126,11 @@ public class MainMenu : MonoBehaviour
         }
         menuCamera.gameObject.SetActive(true);
         mainCamera.gameObject.SetActive(false);
+        menuPanel.SetActive(true);
+        upgradesPanel.SetActive(false);
+        isGameStart = false;
+        menuTheme.Play();
+        gameTheme.Stop();
     }
 
     public void SwitchToMainCamera()
@@ -138,6 +146,15 @@ public class MainMenu : MonoBehaviour
         }
         menuCamera.gameObject.SetActive(false);
         mainCamera.gameObject.SetActive(true);
+    }
+
+    private void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     public bool getIsGameStart() {

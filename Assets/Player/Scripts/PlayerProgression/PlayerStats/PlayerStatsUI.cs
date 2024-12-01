@@ -28,6 +28,11 @@ public class PlayerUI : MonoBehaviour
         if(mainMenu.getIsGameStart())
         {
             ShowUI();
+            UpdateUI();
+        } 
+        else 
+        {
+            HideUI();
         }
     }
 
