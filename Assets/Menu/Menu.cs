@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
     public GameObject menuPanel;
     public Button mainMenuButton;
     MainMenu mainMenu;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
 
     private void Awake()
@@ -35,7 +35,9 @@ public class Menu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && mainMenu.getIsGameStart())
         {
-            if (isPaused)
+            if (!isPaused && Time.timeScale == 0f)
+                return;
+            else if (isPaused && Time.timeScale == 0F)
                 ResumeGame();
             else
                 PauseGame();
@@ -67,6 +69,7 @@ public class Menu : MonoBehaviour
         mainMenu.SwitchToMenuCamera();
         menuPanel.SetActive(false);
         Time.timeScale = 1f;
+        isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

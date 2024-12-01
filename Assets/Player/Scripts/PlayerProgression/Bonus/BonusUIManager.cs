@@ -51,18 +51,21 @@ public class BonusUIManager : MonoBehaviour
         secondBonusText.text = $"{secondPositiveText}\n{secondNegativeText}";
 
         bonusPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void OnFirstBonusSelected()
     {
         ApplyBonus(firstBonus);
         bonusPanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void OnSecondBonusSelected()
     {
         ApplyBonus(secondBonus);
         bonusPanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     private void ApplyBonus(Bonus bonus)

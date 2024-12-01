@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooting : SoundEmitter
 {
     [SerializeField] private Transform player;
-    [SerializeField] private float orbitDistance = 1.5f;
+    [SerializeField] private float orbitDistance = 1f;
     [SerializeField] private Vector3 orbitOffset = new Vector3(0, 0.5f, 0);
 
     [SerializeField] private Camera mainCamera;
@@ -31,7 +31,7 @@ public class Shooting : SoundEmitter
 
     void Update()
     {
-        if (!mainMenu.getIsGameStart())
+        if (!mainMenu.getIsGameStart() || Time.timeScale == 0f)
         {
             return;
         }
