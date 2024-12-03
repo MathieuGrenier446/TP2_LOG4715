@@ -106,7 +106,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public bool canPurchase() {
-        if(PlayerStats.Instance.GetCurrency() >= 1){
+        if(PlayerStats.Instance.GetCurrency() >= 5){
             return true;
         } else {
             return false;
