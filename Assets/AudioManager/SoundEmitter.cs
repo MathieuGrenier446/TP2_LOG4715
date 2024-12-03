@@ -28,7 +28,7 @@ public class SoundEmitter : MonoBehaviour
     }
 
     // The item must stay alive while the sound is playing, but we still want to make it invisible when the sound is playing
-    private void HideVisuals()
+    public void HideVisuals()
     {
         // Could only get MeshRenderer components and disable it, but this is more modulable.
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
@@ -38,7 +38,7 @@ public class SoundEmitter : MonoBehaviour
         }
     }
 
-    private void DisableColliders()
+    public void DisableColliders()
     {
         // Disable all colliders (prevent further interactions)
         Collider[] colliders = GetComponentsInChildren<Collider>();
