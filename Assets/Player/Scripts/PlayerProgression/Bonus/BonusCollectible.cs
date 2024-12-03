@@ -29,7 +29,6 @@ public class BonusCollectible : SoundEmitter
 
             bonusUIManager.ShowBonusOptions(bonus1, bonus2);
             PlaySoundAndDestroy(pickUpSound);
-            Destroy(gameObject, pickUpSound.length);
         }
     }
 }

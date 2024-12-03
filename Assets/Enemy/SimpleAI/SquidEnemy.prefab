@@ -202,6 +202,7 @@ MonoBehaviour:
   AttackRange: 4
   wallDetectionRange: 0.2
   rangedWeapon: {fileID: 1596021868338216837}
+  deathSound: {fileID: 8300000, guid: ef04a3f519038394491c0501eec1b761, type: 3}
   MaxFallDistance: 5
   playerPosition: {x: 0, y: 0, z: 0}
   isPlayerInSight: 0

@@ -13,12 +13,16 @@ public class SoundEmitter : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClip);
     }
-    protected void PlaySoundAndDestroy(AudioClip audioClip, bool hideVisuals = true)
+    protected void PlaySoundAndDestroy(AudioClip audioClip, bool hideVisuals = true, bool disableColliders = true)
     {
         PlaySound(audioClip);
         if(hideVisuals)
         {
             HideVisuals();
+        }
+        if(disableColliders)
+        {
+            DisableColliders();
         }
         Destroy(gameObject, audioClip.length);
     }
@@ -32,7 +36,10 @@ public class SoundEmitter : MonoBehaviour
         {
             renderer.enabled = false;
         }
+    }
 
+    private void DisableColliders()
+    {
         // Disable all colliders (prevent further interactions)
         Collider[] colliders = GetComponentsInChildren<Collider>();
         foreach (Collider collider in colliders)
