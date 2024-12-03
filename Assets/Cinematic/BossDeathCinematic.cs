@@ -50,7 +50,8 @@ public class BossCinematic : MonoBehaviour
 
     private IEnumerator MoveAndShakeCamera(Vector3 offset, float duration, float intensity)
     {
-        Vector3 startPosition = mainCamera.transform.position;
+        Vector3 startPosition = playerTransform.position + new Vector3(20, 20, 0);
+
 
         float elapsedTime = 0.0f;
 
