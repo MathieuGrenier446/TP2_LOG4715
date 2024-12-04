@@ -204,6 +204,7 @@ public class PlayerController : SoundEmitter
         Vector3 forceVector = new Vector3(0, 0, DashForce * transform.forward.z);
         // _Rb.AddForce(forceVector);
         _Rb.linearVelocity = forceVector;
+        canDash = false;
         yield return new WaitForSeconds(DashingTime);
         _Rb.useGravity = true;
         isDashing = false;

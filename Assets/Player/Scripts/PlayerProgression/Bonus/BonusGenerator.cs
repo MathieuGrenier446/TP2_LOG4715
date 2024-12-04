@@ -7,7 +7,7 @@ public class BonusGenerator
 {
     public const float TOTAL_FACTOR = 0.5f;
     public const float MIN_FACTOR = 0.1f;
-    public const float MAX_FACTOR = 1.0f;
+    public const float MAX_FACTOR = 0.6f;
     public const float FACTOR_ROUNDER = 0.05f;
     public Bonus GenerateBonus()
     {
