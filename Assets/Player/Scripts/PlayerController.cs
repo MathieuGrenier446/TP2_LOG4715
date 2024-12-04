@@ -178,7 +178,7 @@ public class PlayerController : SoundEmitter
 
     void OnTriggerStay(Collider coll) {
         if (coll.gameObject.tag == "Obstacle" && !inIframe) {
-            TakeDamage(10);
+            TakeDamage(20);
             inIframe = true;
         }
     }

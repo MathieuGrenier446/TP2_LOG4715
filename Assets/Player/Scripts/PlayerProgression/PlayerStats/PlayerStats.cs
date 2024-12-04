@@ -33,8 +33,11 @@ public class PlayerStats
 
 	private uint experience;
 
+	MainMenu mainMenu;
+
 	public PlayerStats(float attack, float health, uint experience = 0, int currency = 0, int ammo = 0)
 	{
+		mainMenu = MainMenu.Instance;
 		baseAttack = attack;
 		maxHealth = health;
 		currentHealth = health;
@@ -144,8 +147,8 @@ public class PlayerStats
 			currentHealth = maxHealth;
 		}
 		if(currentHealth <= 0) {
+			mainMenu.SwitchToMenuCamera();
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-			Instance = new PlayerStats(DEFAULT_ATTACK, DEFAULT_HEALTH);
 		}
 		NotifyUI();
 	}
