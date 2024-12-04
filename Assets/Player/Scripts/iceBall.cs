@@ -31,6 +31,8 @@ public class IceBall : MonoBehaviour
         if (other.CompareTag("Enemy")){
             EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
             enemy.TakeDamage(force);
+        }
+        if (!other.CompareTag("Obstacle") && !other.CompareTag("Player") && !other.CompareTag("Currency")){
             Destroy(gameObject);
         }
         
