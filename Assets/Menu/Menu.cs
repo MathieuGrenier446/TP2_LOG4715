@@ -6,7 +6,10 @@ public class Menu : MonoBehaviour
 {
     public static Menu Instance { get; private set; }
     public GameObject menuPanel;
+    public GameObject confirmPanel;
     public Button mainMenuButton;
+    public Button confirmButton;
+    public Button cancelButton;
     MainMenu mainMenu;
     public bool isPaused = false;
 
@@ -26,9 +29,12 @@ public class Menu : MonoBehaviour
 
     private void Start() {
         mainMenu = MainMenu.Instance;
-        mainMenuButton.onClick.AddListener(Mainmenu);
+        mainMenuButton.onClick.AddListener(Confirm);
+        confirmButton.onClick.AddListener(Mainmenu);
+        cancelButton.onClick.AddListener(Back);
 
         menuPanel.SetActive(false);
+        confirmPanel.SetActive(false);
     }
 
     void Update()
@@ -53,16 +59,9 @@ public class Menu : MonoBehaviour
         public void ResumeGame()
     {
         menuPanel.SetActive(false);
+        confirmPanel.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-    }
-
-    public bool canPurchase() {
-        if(PlayerStats.Instance.GetCurrency() >= 5){
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public void Mainmenu() {
@@ -71,6 +70,16 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Confirm() {
+        menuPanel.SetActive(false);
+        confirmPanel.SetActive(true);
+    }
+
+    public void Back() {
+        menuPanel.SetActive(true);
+        confirmPanel.SetActive(false);
     }
 }
 

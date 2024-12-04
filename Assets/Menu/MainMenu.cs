@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public Camera menuCamera;
     public Camera mainCamera;
+    public Camera cinematicCamera;
 
     private void Awake()
     {
@@ -106,7 +107,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public bool canPurchase() {
-        if(PlayerStats.Instance.GetCurrency() >= 1){
+        if(PlayerStats.Instance.GetCurrency() >= 5){
             return true;
         } else {
             return false;

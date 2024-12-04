@@ -23,7 +23,6 @@ public class EnemyController : SoundEmitter
     public float AttackRange = 2f;
     public float wallDetectionRange = 0.2f;
     public RangedWeapon rangedWeapon;
-    public AudioClip supriseSound;
     public AudioClip deathSound;
     public float MaxFallDistance;
     [HideInInspector]
@@ -62,10 +61,9 @@ public class EnemyController : SoundEmitter
     }
 
 
-    public void Die(){
+    public virtual void Die(){
         PlayerStats.Instance.AwardEnemyKillExperience();
         Emote("Nooo!", Color.red);
-        // TODO Should we not hide visuals
         PlaySoundAndDestroy(deathSound);
     }
 
@@ -118,7 +116,6 @@ public class EnemyController : SoundEmitter
         }
         float distanceToTarget = Vector3.Distance(transform.position, playerCollider.transform.position);
         this.isPlayerInAttackRange = distanceToTarget <=AttackRange;
-        if(!isPlayerInSight) PlaySound(supriseSound);
         this.isPlayerInSight = true;
         PlayerController player = playerCollider.gameObject.GetComponent<PlayerController>();
         playerPosition = player.Target.position;
