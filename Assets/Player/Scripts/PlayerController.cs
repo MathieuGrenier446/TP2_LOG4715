@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : SoundEmitter
@@ -27,6 +28,9 @@ public class PlayerController : SoundEmitter
 
     [SerializeField]
     LayerMask WhatIsGround;
+
+    public float SlopeLimit = 45f; 
+    public float SlopeGroundCheckDistance = 1.1f;
 
     // Dash
     
@@ -66,7 +70,7 @@ public class PlayerController : SoundEmitter
     // Vérifie les entrées de commandes du joueur
     void Update()
     {
-        if (!mainMenu.getIsGameStart())
+        if (mainMenu && !mainMenu.getIsGameStart())
         {
             return;
         }
@@ -92,6 +96,17 @@ public class PlayerController : SoundEmitter
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
+        if (horizontal != 0) {
+            bool isHit = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, SlopeGroundCheckDistance, WhatIsGround);
+            if (isHit){
+                Vector3 groundNormal = hit.normal;
+                float slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+                if (slopeAngle > SlopeLimit)
+                {
+                    horizontal = 0;
+                }
+            }
+        }
         _Rb.linearVelocity = new Vector3(_Rb.linearVelocity.x, _Rb.linearVelocity.y, horizontal);
         _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
     }
