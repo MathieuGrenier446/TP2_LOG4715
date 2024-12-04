@@ -440,6 +440,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fded9f684552f104e951fc2e9d638d6b, type: 3}
+--- !u!114 &362847212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2040710731497779673, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1535643839}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd36bd38edc257b448884e0f11afb0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &433348160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -518,6 +530,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab86f89d36b3479449c477f7116822d0, type: 3}
+--- !u!114 &591548263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2040710731497779673, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1732620319831397274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd36bd38edc257b448884e0f11afb0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &591548269 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8150306092307617569, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1732620319831397274}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &661030387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,6 +1413,16 @@ PrefabInstance:
       objectReference: {fileID: 1122969749}
     - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
         type: 3}
+      propertyPath: shakeDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+        type: 3}
+      propertyPath: bossController
+      value: 
+      objectReference: {fileID: 362847212}
+    - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+        type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1076797340}
@@ -2193,6 +2233,26 @@ PrefabInstance:
       objectReference: {fileID: 1122969749}
     - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
         type: 3}
+      propertyPath: bossTransform
+      value: 
+      objectReference: {fileID: 591548269}
+    - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+        type: 3}
+      propertyPath: shakeDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+        type: 3}
+      propertyPath: bossController
+      value: 
+      objectReference: {fileID: 591548263}
+    - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+        type: 3}
+      propertyPath: fadeOutDuration
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626564623411867900, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+        type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1076797340}
@@ -2205,6 +2265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SquidBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797175967324266823, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.241
       objectReference: {fileID: 0}
     - target: {fileID: 8150306092307617569, guid: 66eb6a04fddd79a4c935ffddfbd68a3b,
         type: 3}

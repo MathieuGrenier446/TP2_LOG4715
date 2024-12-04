@@ -7,7 +7,6 @@ public class BossController : EnemyController
         // Not useful since we win ?
         PlayerStats.Instance.AwardBossKillExperience();
         BossCinematic.Instance.StartCinematic();
-        Emote("NOOOOOOOOOOO!", Color.red);
         PlaySound(victorySound);
     }
 }

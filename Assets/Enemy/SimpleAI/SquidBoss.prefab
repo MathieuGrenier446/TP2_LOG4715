@@ -45,14 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeCanvasGroup: {fileID: 783158523025028017}
-  shakeDuration: 10
+  shakeDuration: 3
   shakeIntensity: 0.15
-  fadeOutDuration: 10
+  fadeOutDuration: 7
   playerTransform: {fileID: 0}
+  bossTransform: {fileID: 8150306092307617569}
   cameraOffset: {x: 5, y: 0, z: 0}
   cameraMoveDuration: 2
   mainCamera: {fileID: 0}
   playerController: {fileID: 0}
+  bossController: {fileID: 2040710731497779673}
 --- !u!1 &3508818237663141054
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 2664688401931026433, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
       propertyPath: m_Name
-      value: SquidBoss Variant
+      value: SquidBoss
       objectReference: {fileID: 0}
     - target: {fileID: 3863106871945829896, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
@@ -387,6 +389,11 @@ PrefabInstance:
       propertyPath: searchingSound
       value: 
       objectReference: {fileID: 8300000, guid: 2c168b998a1f441439aca98b939ff64d, type: 3}
+    - target: {fileID: 4288543873714321560, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.241
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3863106871945829896, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0, type: 3}
     m_RemovedGameObjects: []
