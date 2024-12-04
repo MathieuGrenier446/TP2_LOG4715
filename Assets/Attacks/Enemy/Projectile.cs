@@ -28,10 +28,14 @@ public class Projectile: MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerStats.Instance.CurrentHealthMod(-Damage);
+            Destroy(gameObject);
         } else if (other.CompareTag("Enemy")){
             EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
             enemy.TakeDamage(Damage);
+            Destroy(gameObject);
+        } else if (other.CompareTag("Floor")) {
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        
     }
 }

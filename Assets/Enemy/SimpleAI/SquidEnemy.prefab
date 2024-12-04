@@ -196,8 +196,8 @@ MonoBehaviour:
   ChaseMoveSpeedMultiplier: 2
   Health: 100
   MoveSpeed: 1
-  AttackDamage: 5
-  AngleFOV: 120
+  AttackDamage: 10
+  AngleFOV: 180
   SightRange: 10
   AttackRange: 4
   wallDetectionRange: 0.2

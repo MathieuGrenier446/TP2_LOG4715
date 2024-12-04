@@ -50,11 +50,12 @@ MonoBehaviour:
   fadeOutDuration: 7
   playerTransform: {fileID: 0}
   bossTransform: {fileID: 8150306092307617569}
+  playerController: {fileID: 0}
+  bossController: {fileID: 2040710731497779673}
+  mainAudioSource: {fileID: 0}
   cameraOffset: {x: 5, y: 0, z: 0}
   cameraMoveDuration: 2
   mainCamera: {fileID: 0}
-  playerController: {fileID: 0}
-  bossController: {fileID: 2040710731497779673}
 --- !u!1 &3508818237663141054
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +290,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 1075243211037703347, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075243211037703347, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075243211037703347, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -307,17 +323,17 @@ PrefabInstance:
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0024983338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.4499998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
@@ -327,7 +343,7 @@ PrefabInstance:
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
@@ -337,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1939915681970687742, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
         type: 3}
@@ -393,6 +409,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Volume
       value: 0.241
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407874373423267157, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.556
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407874373423267157, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.308
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3863106871945829896, guid: 2ff07cbdd35d4ed41bce23ed43ba25a0, type: 3}
@@ -455,12 +481,12 @@ MonoBehaviour:
     m_Bits: 64
   EmoteText: {fileID: 5689732157985277407}
   ChaseMoveSpeedMultiplier: 2
-  Health: 1
+  Health: 200
   MoveSpeed: 1
-  AttackDamage: 5
-  AngleFOV: 120
-  SightRange: 5
-  AttackRange: 2
+  AttackDamage: 40
+  AngleFOV: 180
+  SightRange: 10
+  AttackRange: 5
   wallDetectionRange: 0.2
   rangedWeapon: {fileID: 9067564999830791770}
   deathSound: {fileID: 8300000, guid: ef04a3f519038394491c0501eec1b761, type: 3}
