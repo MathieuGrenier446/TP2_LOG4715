@@ -35,7 +35,6 @@ public class MainMenu : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -88,7 +87,7 @@ public class MainMenu : MonoBehaviour
     public void UpgradeAttack() {
         if(canPurchase()) {
             PlayerStats.DEFAULT_ATTACK += 2;
-            PlayerStats.Instance.CurrencyMod(-5);
+            PlayerStats.Instance.CurrencyMod(-15);
             upgradeFeedback = "\nupgrade successful!";
         } else {
             upgradeFeedback = "\nyou don't have enough seashells";
@@ -98,7 +97,7 @@ public class MainMenu : MonoBehaviour
     public void UpgradeHealth() {
         if(canPurchase()) {
             PlayerStats.DEFAULT_HEALTH += 10;
-            PlayerStats.Instance.CurrencyMod(-5);
+            PlayerStats.Instance.CurrencyMod(-15);
             upgradeFeedback = "\nupgrade successful!";
         } else {
             upgradeFeedback = "\nyou don't have enough seashells";
@@ -106,7 +105,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public bool canPurchase() {
-        if(PlayerStats.Instance.GetCurrency() >= 5){
+        if(PlayerStats.Instance.GetCurrency() >= 15){
             return true;
         } else {
             return false;

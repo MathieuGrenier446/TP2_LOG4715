@@ -11,6 +11,7 @@ public class Currency : SoundEmitter
     }
     private void OnTriggerEnter(Collider other)
     {
-        PlaySoundAndDestroy(pickUpSound);
+        if(other.CompareTag("Player"))
+            PlaySoundAndDestroy(pickUpSound);
     }
 }
