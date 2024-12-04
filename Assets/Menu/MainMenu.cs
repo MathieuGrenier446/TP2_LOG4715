@@ -29,7 +29,6 @@ public class MainMenu : MonoBehaviour
 
     public Camera menuCamera;
     public Camera mainCamera;
-    public Camera cinematicCamera;
 
     private void Awake()
     {
