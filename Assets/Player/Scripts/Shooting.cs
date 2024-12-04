@@ -31,7 +31,7 @@ public class Shooting : SoundEmitter
 
     void Update()
     {
-        if (!mainMenu.getIsGameStart() || Time.timeScale == 0f)
+        if (mainMenu && !mainMenu.getIsGameStart() || Time.timeScale == 0f)
         {
             return;
         }
