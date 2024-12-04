@@ -162,7 +162,7 @@ public class PlayerController : SoundEmitter
 
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.tag == "Obstacle" && !inIframe) {
-            TakeDamage(10);
+            TakeDamage(20);
             inIframe = true;
         } else if (coll.CompareTag("Projectile")){
             Projectile projectile = coll.gameObject.GetComponent<Projectile>();
