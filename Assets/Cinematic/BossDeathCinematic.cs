@@ -14,16 +14,20 @@ public class BossCinematic : MonoBehaviour
     public Transform playerTransform;
 
     public Transform bossTransform;
-    public Vector3 cameraOffset;
-    public float cameraMoveDuration = 2.0f;
 
-    public Camera mainCamera;
-
+    
     [SerializeField]
     private PlayerController playerController;
 
     [SerializeField]
     private BossController bossController;
+
+    [SerializeField]
+    private AudioSource mainAudioSource;
+    public Vector3 cameraOffset;
+    public float cameraMoveDuration = 2.0f;
+
+    public Camera mainCamera;
 
     private void Awake()
     {
@@ -48,8 +52,8 @@ public class BossCinematic : MonoBehaviour
 
     private IEnumerator CinematicSequence()
     {
+        mainAudioSource.mute = true;
         yield return StartCoroutine(MoveToBossAndShakeCamera(cameraOffset, shakeDuration, shakeIntensity));
-
         yield return StartCoroutine(MoveToPlayerAndFadeOut(cameraOffset, fadeOutDuration));
         Menu.Instance.Mainmenu();
     }
@@ -61,6 +65,7 @@ public class BossCinematic : MonoBehaviour
         float elapsedTime = 0.0f;
 
         bossTransform.rotation = Quaternion.Euler(0,-90,0);
+        bossController.StopMoving();
 
         while (elapsedTime < duration)
         {
@@ -104,7 +109,7 @@ public class BossCinematic : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            Vector3 smoothPosition = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+            Vector3 smoothPosition = Vector3.Lerp(startPosition, targetPosition, elapsedTime / cameraMoveDuration);
             mainCamera.transform.position = smoothPosition;
 
             mainCamera.transform.LookAt(playerTransform.position);
