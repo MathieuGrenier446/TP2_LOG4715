@@ -29,6 +29,8 @@ public class BossCinematic : MonoBehaviour
 
     public Camera mainCamera;
 
+    private float lockedZPosition;
+
     private void Awake()
     {
         if (Instance == null)
@@ -46,6 +48,7 @@ public class BossCinematic : MonoBehaviour
     {
         // Disable player controls
         playerController.enabled = false;
+        lockedZPosition = playerTransform.position.z;
         bossController.enabled = false;
         StartCoroutine(CinematicSequence());
     }
@@ -53,6 +56,7 @@ public class BossCinematic : MonoBehaviour
     private IEnumerator CinematicSequence()
     {
         mainAudioSource.mute = true;
+        StartCoroutine(LockPlayerZPosition());
         yield return StartCoroutine(MoveToBossAndShakeCamera(cameraOffset, shakeDuration, shakeIntensity));
         yield return StartCoroutine(MoveToPlayerAndFadeOut(cameraOffset, fadeOutDuration));
         Menu.Instance.Mainmenu();
@@ -123,6 +127,18 @@ public class BossCinematic : MonoBehaviour
         mainCamera.transform.position = targetPosition;
         mainCamera.transform.LookAt(playerTransform.position);
         fadeCanvasGroup.alpha = 1;
+    }
+
+    private IEnumerator LockPlayerZPosition()
+    {
+        while (!playerController.enabled) // Only enforce while the cinematic is active
+        {
+            Vector3 position = playerTransform.position;
+            position.z = lockedZPosition; // Lock the X position
+            playerTransform.position = position;
+
+            yield return null;
+        }
     }
 }
 
